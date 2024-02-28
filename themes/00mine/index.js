@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useRef } from 'react'
 import Footer from './components/Footer'
 import SideRight from './components/SideRight'
 import TopNav from './components/TopNav'
+import TopNavB from './components/TopNavB'
 import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
 import BlogPostListPage from './components/BlogPostListPage'
@@ -77,7 +78,7 @@ const LayoutBase = props => {
         <Style/>
 
         {/* 顶部导航 */}
-        <TopNav {...props} />
+        <TopNavB {...props} />
 
         {/* 顶部嵌入 */}
         <Transition
