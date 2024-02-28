@@ -117,8 +117,7 @@ const LayoutBase = props => {
                         </Transition>
                     </div>
 
-                    {/* 右侧栏 */}
-                    <SideRight {...props} className={`space-y-4 lg:w-80 pt-4 ${post ? 'lg:pt-0' : 'lg:pt-4'}`} />
+                    
                 </div>
             </main>
 
