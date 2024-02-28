@@ -17,11 +17,13 @@ export default function PostHeader({ post, siteInfo }) {
   if (fullWidth) {
     return <div className='my-8'/>
   }
+  
+  //const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
+  const headerImage = post?.pageCover ? post.pageCover : null //-无首图时不显示
 
-  const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
-
+  if(headerImage){
   return (
-    <div id="header" className="w-full h-96 relative md:flex-shrink-0 z-10" >
+    <div id="header" className="w-full  relative md:flex-shrink-0 z-10" >
       <LazyImage priority={true} src={headerImage} className='w-full h-full object-cover object-center absolute top-0'/>
 
       <header id='article-header-cover'
@@ -42,9 +44,10 @@ export default function PostHeader({ post, siteInfo }) {
           <div className="leading-snug font-bold xs:text-4xl sm:text-4xl md:text-5xl md:leading-snug text-4xl shadow-text-md flex justify-center text-center text-white">
             <NotionIcon icon={post.pageIcon} className='text-4xl mx-1' />{post.title}
           </div>
+          
 
-          <section className="flex-wrap shadow-text-md flex text-sm justify-center mt-4 text-white dark:text-gray-400 font-light leading-8">
-
+          {/* //发布时间 更新时间 
+          <section className="flex-wrap shadow-text-md flex text-sm justify-center mt-4 text-white dark:text-gray-400 font-light leading-8">      
             <div className='flex justify-center dark:text-gray-200 text-opacity-70'>
               {post?.type !== 'Page' && (
                 <>
@@ -67,7 +70,7 @@ export default function PostHeader({ post, siteInfo }) {
               <span className="mr-2 busuanzi_value_page_pv" />
               {locale.COMMON.VIEWS}
             </div>}
-          </section>
+          </section>*/}
 
             <div className='mt-4 mb-1'>
                 {post.tagItems && (
@@ -81,5 +84,5 @@ export default function PostHeader({ post, siteInfo }) {
         </div>
       </header>
     </div>
-  )
+  )}
 }

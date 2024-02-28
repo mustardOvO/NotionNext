@@ -71,7 +71,32 @@ const LayoutBase = props => {
   // Algolia搜索框
   const searchModal = useRef(null)
 
-  return (
+  if (router.route === '/')
+  return(<ThemeGlobalHexo.Provider value={{ searchModal }}>
+    <div id='theme-hexo' className={`${siteConfig('FONT_STYLE')} dark:bg-black scroll-smooth`}>
+        <Style/>
+
+        {/* 顶部导航 */}
+        <TopNav {...props} />
+
+        {/* 顶部嵌入 */}
+        <Transition
+            show={!onLoading}
+            appear={true}
+            enter="transition ease-in-out duration-700 transform order-first"
+            enterFrom="opacity-0 -translate-y-16"
+            enterTo="opacity-100"
+            leave="transition ease-in-out duration-300 transform"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0 translate-y-16"
+            unmount={false}
+        >
+            {headerSlot}
+        </Transition>
+        </div>
+        </ThemeGlobalHexo.Provider>
+        )
+  else return (
     <ThemeGlobalHexo.Provider value={{ searchModal }}>
         <div id='theme-hexo' className={`${siteConfig('FONT_STYLE')} dark:bg-black scroll-smooth`}>
             <Style/>
@@ -93,11 +118,13 @@ const LayoutBase = props => {
             >
                 {headerSlot}
             </Transition>
+            
 
             {/* 主区块 */}
-            <main id="wrapper" className={`${siteConfig('HEXO_HOME_BANNER_ENABLE', null, CONFIG) ? '' : 'pt-16'} bg-hexo-background-gray dark:bg-black w-full py-8 md:px-8 lg:px-24 min-h-screen relative`}>
-                <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'} >
-                    <div className={`${className || ''} w-full ${fullWidth ? '' : 'max-w-4xl'} h-full overflow-hidden`}>
+            
+            <main id="wrapper" className={`${siteConfig('HEXO_HOME_BANNER_ENABLE', null, CONFIG) ? '' : 'pt-16'} bg-hexo-background-gray dark:bg-black w-full py-8 md:px-8 lg:px-24 min-h-screen  relative`}>
+            <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'} >
+            <div className={`${className || ''} w-full ${fullWidth ? '' : 'max-w-4xl'} h-full overflow-hidden`}>
 
                         <Transition
                             show={!onLoading}
@@ -116,9 +143,7 @@ const LayoutBase = props => {
                             {children}
                         </Transition>
                     </div>
-
-                    
-                </div>
+                    </div>
             </main>
 
             <div className='block lg:hidden'>
@@ -132,7 +157,7 @@ const LayoutBase = props => {
             <AlgoliaSearchModal cRef={searchModal} {...props}/>
 
             {/* 页脚 */}
-            <Footer title={siteConfig('TITLE') } />
+            {/* {<Footer title={siteConfig('TITLE') } />} */}
         </div>
     </ThemeGlobalHexo.Provider>
   )
@@ -140,12 +165,12 @@ const LayoutBase = props => {
 
 /**
  * 首页
- * 是一个博客列表，嵌入一个Hero大图
+ * 是一个博客列表，嵌入一个Hero大图<Hero {...props} />
  * @param {*} props
  * @returns
  */
 const LayoutIndex = (props) => {
-  return <LayoutPostList {...props} className='pt-8' />
+  return <></>
 }
 
 /**
@@ -363,6 +388,29 @@ const LayoutTagIndex = props => {
   )
 }
 
+
+/**
+ * 新款页面
+ * @param {*} props
+ * @returns
+ */
+const LayoutAbout111 = (props) => {
+  const { archivePosts } = props
+  return <div className='pt-8'>
+        <Card className='w-full'>
+            <div className="mb-10 pb-20 bg-white md:p-12 p-3 min-h-full dark:bg-hexo-black-gray">
+                {Object.keys(archivePosts).map(archiveTitle => (
+                    <BlogPostArchive
+                        key={archiveTitle}
+                        posts={archivePosts[archiveTitle]}
+                        archiveTitle={archiveTitle}
+                    />
+                ))}
+            </div>
+        </Card>
+    </div>
+}
+
 export {
   CONFIG as THEME_CONFIG,
   LayoutBase,
@@ -373,5 +421,6 @@ export {
   Layout404,
   LayoutCategoryIndex,
   LayoutPostList,
-  LayoutTagIndex
+  LayoutTagIndex,
+  LayoutAbout111,
 }
