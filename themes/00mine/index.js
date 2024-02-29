@@ -72,7 +72,7 @@ const LayoutBase = props => {
   // Algolia搜索框
   const searchModal = useRef(null)
 
-  if (router.route === '/')
+  if (router.route === '/') //首页
   return(<ThemeGlobalHexo.Provider value={{ searchModal }}>
     <div id='theme-hexo' className={`${siteConfig('FONT_STYLE')} dark:bg-black scroll-smooth`}>
         <Style/>
@@ -288,10 +288,6 @@ const LayoutSlug = props => {
 
                     <div className='pt-4 border-dashed'></div>
 
-                    {/* 评论互动 */}
-                    <div className="duration-200 overflow-x-auto bg-white dark:bg-hexo-black-gray px-3">
-                        <Comment frontMatter={post} />
-                    </div>
                 </div>}
             </div>
 

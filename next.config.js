@@ -42,7 +42,8 @@ module.exports = withBundleAnalyzer({
       'source.unsplash.com',
       'p1.qhimg.com',
       'webmention.io',
-      'ko-fi.com'
+      'ko-fi.com',
+      'oss-cn-hangzhou.aliyuncs.com'
     ]
   },
   // 默认将feed重定向至 /public/rss/feed.xml

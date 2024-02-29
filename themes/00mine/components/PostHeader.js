@@ -19,7 +19,8 @@ export default function PostHeader({ post, siteInfo }) {
   }
   
   //const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
-  const headerImage = post?.pageCover ? post.pageCover : null //-无首图时不显示
+  const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
+
 
   if(headerImage){
   return (
