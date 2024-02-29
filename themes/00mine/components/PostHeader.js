@@ -19,16 +19,14 @@ export default function PostHeader({ post, siteInfo }) {
   }
   
   //const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
-  const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
+  const headerImage = post?.pageCover ? post.pageCover : null
 
-
-  if(headerImage){
   return (
-    <div id="header" className="w-full  relative md:flex-shrink-0 z-10" >
+    <div id="header" className="w-full h-96 relative md:flex-shrink-0 z-10" >
       <LazyImage priority={true} src={headerImage} className='w-full h-full object-cover object-center absolute top-0'/>
 
       <header id='article-header-cover'
-            className="bg-black bg-opacity-70 absolute top-0 w-full h-96 py-10 flex justify-center items-center ">
+            className="bg-black bg-opacity-70 absolute top-0 w-full h-full py-10 flex justify-center items-center ">
 
         <div className='mt-10'>
             <div className='mb-3 flex justify-center'>
@@ -85,5 +83,5 @@ export default function PostHeader({ post, siteInfo }) {
         </div>
       </header>
     </div>
-  )}
+  )
 }
