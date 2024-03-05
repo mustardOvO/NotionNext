@@ -6,7 +6,7 @@ import BlogPost from './BlogPost'
 import { useEffect, useRef } from 'react'
 import { siteConfig } from '@/lib/config'
 
-export const BlogListPage = props => {
+const BlogListPage = props => {
   const { page = 1, posts, postCount } = props
   const { locale } = useGlobal()
   const router = useRouter()
@@ -70,3 +70,5 @@ export const BlogListPage = props => {
         </div>
   )
 }
+
+export default BlogListPage

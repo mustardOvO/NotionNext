@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import throttle from 'lodash.throttle'
 import { siteConfig } from '@/lib/config'
 
-export const BlogListScroll = props => {
+const BlogListScroll = props => {
   const { posts } = props
   const { locale } = useGlobal()
 
@@ -80,3 +80,5 @@ export const BlogListScroll = props => {
           </div>
   )
 }
+
+export default BlogListScroll

@@ -192,7 +192,7 @@ const LayoutPostList = (props) => {
 }
 
 /**
- * 博客列表2
+ * 博客列表2，图片形式
  * @param {*} props
  * @returns
  */
