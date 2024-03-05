@@ -8,6 +8,8 @@ import { useGlobal } from '@/lib/global'
 import { isBrowser } from '@/lib/utils'
 import BlogPostListPage from './components/BlogPostListPage'
 import BlogPostListScroll from './components/BlogPostListScroll'
+import BlogListPage from './components/BlogListPage'
+import BlogListScroll from './components/BlogListScroll'
 import Hero from './components/Hero'
 import { useRouter } from 'next/router'
 import Card from './components/Card'
@@ -183,6 +185,17 @@ const LayoutPostList = (props) => {
   return <div className='pt-8'>
         <SlotBar {...props} />
         {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogPostListPage {...props} /> : <BlogPostListScroll {...props} />}
+    </div>
+}
+
+/**
+ * 博客列表2
+ * @param {*} props
+ * @returns
+ */
+const LayoutPlogList = (props) => {
+  return <div className='pt-8'>
+        {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogListPage {...props} /> : <BlogListScroll {...props} />}
     </div>
 }
 
@@ -420,4 +433,5 @@ export {
   LayoutPostList,
   LayoutTagIndex,
   LayoutAbout111,
+  LayoutPlogList,
 }
