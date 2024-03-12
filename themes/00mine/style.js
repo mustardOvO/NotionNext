@@ -71,9 +71,28 @@ const Style = () => {
     
     //masonry
     .grid{}
-    .grid-item { width: 20%;}
-    .grid-sizer { width: 20%}
-    
+    .grid-item {}
+    .grid-sizer {}
+    //sm: '540px',
+    @media (min-width: 576px) {
+        .grid-item,.grid-sizer {width: 100%;}
+    }
+
+    //md: '720px',
+    @media (min-width: 768px) {
+        .grid-item,.grid-sizer {width: 50%;}
+    }
+
+    //lg: '960px',
+    @media (min-width: 992px) {
+        .grid-item,.grid-sizer {width: 33.3%;}
+    }
+
+    //xl: '1140px',
+    @media (min-width: 1200px) {
+        .grid-item,.grid-sizer {width: 25%;}
+    }
+
 
   `}</style>)
 }

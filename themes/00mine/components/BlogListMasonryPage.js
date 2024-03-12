@@ -34,7 +34,7 @@ const BlogListPage = props => {
             // Masonry 选项设置
             itemSelector: '.grid-item',
             columnWidth: '.grid-sizer',
-            gutter: 20,
+            gutter: 0,
             // 更多选项...
         });
 
@@ -50,7 +50,7 @@ const BlogListPage = props => {
   return (
     
       <div className="w-full">
-        <div ref={gridRef} className="grid">
+        <div ref={gridRef} className="grid ">
          {/* Masonry 布局的项目 */}
          <div className="grid-sizer"></div>
          

@@ -153,8 +153,8 @@ const LayoutBase = props => {
                     </div>
             </main> */}
 
-            <main id="wrapper" className={`${siteConfig('HEXO_HOME_BANNER_ENABLE', null, CONFIG) ? '' : 'pt-16'} bg-hexo-background-grey dark:bg-hexo-background-black w-full py-8 md:px-8 lg:px-24 min-h-screen  relative`}>
-            <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-auto flex space-x-4 justify-center relative z-10'} >
+            <main id="wrapper" className={`${siteConfig('HEXO_HOME_BANNER_ENABLE', null, CONFIG) ? '' : 'pt-16'} bg-hexo-background-grey dark:bg-hexo-background-black w-full py-8 md:px-8 lg:px-8 min-h-screen  relative`}>
+            <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-0 flex  justify-center relative z-10'} >
             <div className={`${className || ''} w-full ${fullWidth ? '' : ''} h-full overflow-hidden`}>
 
                         <Transition
