@@ -69,6 +69,11 @@ const Style = () => {
         scrollbar-color: #49b1f5 transparent
     }
     
+    //masonry
+    .grid{}
+    .grid-item { width: 20%;}
+    .grid-sizer { width: 20%}
+    
 
   `}</style>)
 }

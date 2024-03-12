@@ -1,10 +1,17 @@
 
 import { useGlobal } from '@/lib/global'
 import { useRouter } from 'next/router'
+import { getQueryParam, getQueryVariable, isBrowser } from '@/lib/utils'
 import Link from 'next/link'
 import BlogPost from './BlogPost'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { siteConfig } from '@/lib/config'
+import imagesLoaded from 'imagesloaded';
+import dynamic from 'next/dynamic'
+
+
+
+// export default BlogListPage;
 
 const BlogListPage = props => {
   const { page = 1, posts, postCount } = props
@@ -18,59 +25,41 @@ const BlogListPage = props => {
   const pagePrefix = router.asPath.split('?')[0].replace(/\/page\/[1-9]\d*/, '').replace(/\/$/, '')
 
   const blogPostRefs = useRef([])
+  const gridRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.toggle('visible')
-        }
-      })
-    }, {
-      threshold: 0.1 // 调整阈值以达到最佳效果
-    })
+    if (gridRef.current && typeof window !== 'undefined') {
+      import('masonry-layout').then((Masonry) => {
+        const masonry = new Masonry.default(gridRef.current, {
+            // Masonry 选项设置
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            gutter: 20,
+            // 更多选项...
+        });
 
-    blogPostRefs.current.forEach(ref => {
-      observer.observe(ref)
-    })
+        imagesLoaded(gridRef.current).on('progress', () => {
+            masonry.layout(); // 正确调用 masonry 的 layout() 方法
+        });
+    });
+}
+}, []);
 
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
-  
-  const reorder = (arr, columns) => {
-    // re-order the array so the "cards" read left-right
-    // cols === CSS column-count value
-    
-    const cols = columns;
-    const out = [];
-    let col = 0;
-    while(col < cols) {
-        for(let i = 0; i < arr.length; i += cols) {
-            let _val = arr[i + col];
-            if (_val !== undefined)
-                out.push(_val);
-        }
-        col++;
-    }
-    return(out);
-    
-}  
 
-let postlist=reorder(posts, 3);
 
   return (
+    
       <div className="w-full">
-
-            <div id="posts-wrapper" className='columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-0'>
-            {/* <div id="posts-wrapper" className='grid grid-cols-3 grid-flow-col-dense	'> */}
-                {posts?.map((post, index) => (
-                   <BlogPost index={index} key={post.id} className='order-{10-index}' post={post} {...props} ref={el => blogPostRefs.current.push(el)}/>
-                ))}
-            </div>
-
-            {/* 分页 */}
+        <div ref={gridRef} className="grid">
+         {/* Masonry 布局的项目 */}
+         <div className="grid-sizer"></div>
+         
+          {posts?.map((post, index) => (
+             <BlogPost index={index} key={post.id} className="grid-item"  post={post} {...props} ref={el => blogPostRefs.current.push(el)}/>
+            ))}
+          
+        </div>
+                 
             <div className="flex justify-between text-xs">
                 <Link
                     href={{ pathname: currentPage - 1 === 1 ? `${pagePrefix}/` : `${pagePrefix}/page/${currentPage - 1}`, query: router.query.s ? { s: router.query.s } : {} }}
@@ -91,7 +80,7 @@ let postlist=reorder(posts, 3);
 
                 </Link>
             </div>
-        </div>
+      </div> 
   )
 }
 

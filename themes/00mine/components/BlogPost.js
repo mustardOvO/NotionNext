@@ -5,6 +5,7 @@ import { isMobile } from '@/lib/utils'
 import LazyImage from '@/components/LazyImage'
 import NotionIcon from '@/components/NotionIcon'
 
+
 /**
  * 博客照片卡牌
  * @param {*} props
@@ -29,13 +30,16 @@ const BlogPost = (props) => {
         <article
             onClick={handleClick}
             data-aos-delay={`${delay}`}
-            data-aos="fade-up"
-            data-aos-duration="500"
-            data-aos-once="true"
-            data-aos-anchor-placement="top-bottom"
-            key={post?.id} className='cursor-pointer relative'>
+            // data-aos="fade-up"
+            // data-aos-duration="500"
+            // data-aos-once="true"
+            // data-aos-anchor-placement="top-bottom"
+            key={post?.id} 
+            //display-order="0"
+            //class="grid-item"
+            className='grid-item cursor-pointer w-full relative'>
 
-            <LazyImage src={pageThumbnail} className='rounded-lg w-full h-full px-0.5 py-0.5 object-cover filter contrast-120' />
+            <LazyImage src={pageThumbnail} className='rounded-lg w-full px-0.5 py-0.5 object-cover filter contrast-120' />
 
             <h2 className="text-md absolute left-0 bottom-0 m-4 text-gray-100 shadow-text">
                 <NotionIcon icon={post.pageIcon} /> {post?.title}
