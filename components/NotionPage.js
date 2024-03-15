@@ -137,11 +137,11 @@ const NotionPage = ({ post, className }) => {
     };
   }, [])
 
-  if (!post || !post.blockMap) {
+  if (!post || !post?.blockMap) {
     return <>{post?.summary || ''}</>
   }
 
-  return <div id='notion-article' className={`mx-auto overflow-hidden ${className || ''}`}>
+  return <div id='notion-article' className={` overflow-hidden ${className || ''}`}>
     <NotionRenderer
       recordMap={post.blockMap}
       mapPageUrl={mapPageUrl}

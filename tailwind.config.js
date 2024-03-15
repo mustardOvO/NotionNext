@@ -42,6 +42,8 @@ module.exports = {
         },
         // black: '#212b36',
         'dark-700': '#090e34b3',
+        'dark-400':'#666666cc',
+        'dark-200':'#03050922',
         dark: {
           DEFAULT: '#111928',
           2: '#1F2A37',

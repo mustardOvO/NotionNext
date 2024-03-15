@@ -9,7 +9,7 @@ import { checkContainHttp } from '@/lib/utils'
 
 /**
  * 根据notion的slug访问页面
- * 解析三级以上目录 /article/2023/10/29/test
+ * 解析三级以上目录 /article/2023/10/29/test *
  * @param {*} props
  * @returns
  */

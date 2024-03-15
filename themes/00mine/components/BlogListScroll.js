@@ -45,6 +45,9 @@ const BlogListScroll = props => {
 
   return (
       <div id="posts-wrapper" className="w-full md:pr-12 mb-12" ref={targetRef}>
+        {/* {posts?.map((post, index) => (
+             <BlogPost index={index} key={post.id} className="grid-item"  post={post} {...props} ref={el => blogPostRefs.current.push(el)}/>
+            ))} */}
               {postsToShow.map(p => (
                   <article key={p.id} className="mb-12" >
                       <h2 className="mb-4">
