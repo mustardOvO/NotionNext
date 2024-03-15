@@ -50,7 +50,6 @@ export async function getStaticProps({ params: { prefix, slug } }) {
   })
 
   // 处理非列表内文章的内信息
-  console.log("==============!!!!")
   if (!props?.post) {
     const pageId = slug.slice(-1)[0]
     if (pageId.length >= 32) {

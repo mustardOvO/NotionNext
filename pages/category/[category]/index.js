@@ -37,7 +37,7 @@ export async function getStaticProps({ params: { category } }) {
 
   delete props.allPages
 
-  //脏东西————————————
+  // 脏东西————————————
   console.log(Object.keys(props.posts[0]))
   console.log(props.posts[0].id)
   console.log(props.posts[0].slug)
