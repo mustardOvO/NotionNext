@@ -4,6 +4,9 @@ import { useHexoGlobal } from '..'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { isMobile } from '@/lib/utils'
 import LazyImage from '@/components/LazyImage'
+import TagItemMini from './TagItemMini'
+import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
+import { siteConfig } from '@/lib/config'
 
 
 /**
@@ -14,7 +17,7 @@ import LazyImage from '@/components/LazyImage'
 const BlogPost = (props) => {
   const { post, index, siteInfo } = props
   const pageThumbnail = compressImage(post?.pageCoverThumbnail || siteInfo?.pageCover)
-  //const pageThumbnail = post?.pageCoverThumbnail || siteInfo?.pageCover
+  const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
   const { setModalContent, setShowModal } = useHexoGlobal()
   const handleClick = () => {
     setShowModal(true)
@@ -90,7 +93,7 @@ const BlogPost = (props) => {
 
   return (
     <div
-      onClick={handleClick}
+
       data-aos-delay={`${delay}`}
       data-aos-offset="-1000"
       data-aos="fade-up"
@@ -100,30 +103,44 @@ const BlogPost = (props) => {
       key={post?.id}
       //display-order="0"
       //class="grid-item"
-      className='grid-item cursor-pointer w-full rounded-lg relative'>
+      className='grid-item  w-full rounded-lg relative'>
 
       <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray min-h-20 rounded-lg m-2 relative overflow-clip ">
-        {isVideo(pageThumbnail) ?
-          <video muted playsinline loop autoplay ref={videoRef} src={pageThumbnail} id="video" className=' w-full object-cover'>
-          </video>
+        <div
+          onClick={handleClick}>
 
-          : <LazyImage src={pageThumbnail} className=' w-full object-cover' />
-        }
+          {isVideo(pageThumbnail) ?
+            <video muted playsinline loop autoplay ref={videoRef} src={pageThumbnail} id="video" className='cursor-pointer w-full object-cover'>
+            </video>
+
+            : <LazyImage src={pageThumbnail} className='cursor-pointer w-full object-cover' />
+          }
+        </div>
 
         <h2 className="font-medium w-full bg-black bg-opacity-25 backdrop-blur-sm  text-md absolute left-0 bottom-0 p-4  text-white dark:text-gray-100">
           {/* <NotionIcon icon={post.pageIcon} />  */}
-          {post?.title}
+          <Link href={url} passHref legacyBehavior>
+            {post?.title}
+          </Link>
+
           <div></div>
 
         </h2>
 
         {/* 文章tag */}
-        <div className="flex absolute left-0 top-0 m-2">
-          {post.tagItems?.map(tag => (
+        <div className="flex absolute left-0 top-0 m-4">
+          {post.tagItems && (
+            <div className="flex justify-center flex-nowrap overflow-x-auto gap-1">
+              {post.tagItems.map(tag => (
+                <TagItemMini key={tag.name} tag={tag} />
+              ))}
+            </div>
+          )}
+          {/* {post.tagItems?.map(tag => (
             <div className='px-2 py-1 mx-1 text-xs rounded-lg bg-white bg-opacity-40 hover:bg-black dark:hover:bg-black text-dark-700 hover:text-white duration-200'>
               {tag.name}
             </div>
-          ))}
+          ))} */}
         </div>
 
 

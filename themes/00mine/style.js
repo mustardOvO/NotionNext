@@ -80,17 +80,17 @@ const Style = () => {
 
     //md: '720px',
     @media (min-width: 768px) {
-        .grid-item,.grid-sizer {width: 50%;}
-    }
-
-    //lg: '960px',
-    @media (min-width: 992px) {
         .grid-item,.grid-sizer {width: 33.3%;}
     }
 
+    //lg: '960px',
+    // @media (min-width: 992px) {
+    //     .grid-item,.grid-sizer {width: 20%;}
+    // }
+
     //xl: '1140px',
     @media (min-width: 1200px) {
-        .grid-item,.grid-sizer {width: 25%;}
+        .grid-item,.grid-sizer {width: 20%;}
     }
 
 

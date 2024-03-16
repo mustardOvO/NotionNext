@@ -70,17 +70,17 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 translate-y-0 scale-100  max-w-screen"
                             leaveTo="opacity-0 translate-y-4 scale-50 w-0"
                         >
-                            <Dialog.Panel className="relative w-full transform overflow-hidden rounded-xl mx-10 text-left shadow-xl transition-all ">
+                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl mx-10 text-left shadow-xl transition-all ">
                             <PostHeader post={modalContent} {...props} />
 
 
-                                <section className='px-8 py-20   md:w-2xl lg:w-4xl bg-white dark:bg-hexo-black-gray'>
-                                    <div className="font-medium text-3xl text-black dark:text-white">
+                                <section className='px-8 pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
+                                    {/* <div className="font-medium text-3xl text-black dark:text-white">
                                         {modalContent?.title}
                                     </div>
                                     <div className="pt-2 font-regular  text-gray-400 dark:text-gray-500">
                                         {modalContent?.publishDay}
-                                    </div>
+                                    </div> */}
 
                                     
                                     

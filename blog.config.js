@@ -100,7 +100,7 @@ const BLOG = {
     '/page/[page]': 'LayoutPostList',
     '/category/[category]': 'LayoutPlogList',
     '/category/[category]/page/[page]': 'LayoutPostList',
-    '/tag/[tag]': 'LayoutPostList',
+    '/tag/[tag]': 'LayoutPlogList',
     '/tag/[tag]/page/[page]': 'LayoutPostList',
     '/search': 'LayoutSearch',
     '/search/[keyword]': 'LayoutSearch',
