@@ -20,7 +20,7 @@ export default function PostHeader({ post, siteInfo }) {
   }
 
   //const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
-  const headerImage = post?.pageCover ? post.pageCover : null
+  const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
 
   function getFileExtension(url) {// 提取 URL 中的文件扩展名
     const path = url.split('?')[0]; // 移除查询字符串和片段标识符
