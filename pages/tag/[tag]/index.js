@@ -34,15 +34,15 @@ export async function getStaticProps({ params: { tag } }) {
     props.posts = props.posts?.slice(0, BLOG.POSTS_PER_PAGE)
   }
 
-  // 脏东西————————————
-  console.log(Object.keys(props.posts[0]))
-  console.log(props.posts[0].id)
-  console.log(props.posts[0].slug)
-  const tasks = props.posts.map(async p => {
-    const block = await getPostBlocks(p.id)
-    p.blockMap = block;
-  });
-  await Promise.all(tasks);
+  // // 脏东西————————————
+  // console.log(Object.keys(props.posts[0]))
+  // console.log(props.posts[0].id)
+  // console.log(props.posts[0].slug)
+  // const tasks = props.posts.map(async p => {
+  //   const block = await getPostBlocks(p.id)
+  //   p.blockMap = block;
+  // });
+  // await Promise.all(tasks);
 
   props.tag = tag
   delete props.allPages
