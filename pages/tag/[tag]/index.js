@@ -43,7 +43,7 @@ export async function getStaticProps({ params: { tag } }) {
     p.blockMap = block;
   });
   await Promise.all(tasks);
-  
+
   props.tag = tag
   delete props.allPages
   return {
