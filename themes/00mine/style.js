@@ -79,7 +79,7 @@ const Style = () => {
     }
 
     //md: '720px',
-    @media (min-width: 768px) {
+    @media (min-width: 992px) {
         .grid-item,.grid-sizer {width: 33.3%;}
     }
 
@@ -89,10 +89,14 @@ const Style = () => {
     // }
 
     //xl: '1140px',
-    @media (min-width: 1200px) {
+    // @media (min-width: 1200px) {
+    //     .grid-item,.grid-sizer {width: 20%;}
+    // }
+
+    //'2xl': '1320px'
+    @media (min-width: 1400px) {
         .grid-item,.grid-sizer {width: 20%;}
     }
-
 
   `}</style>)
 }
