@@ -105,19 +105,21 @@ const BlogPost = (props) => {
       //class="grid-item"
       className='grid-item  w-full rounded-lg relative'>
 
-      <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray min-h-20 rounded-lg m-2 relative overflow-clip ">
+      <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray border dark:border-gray-800 min-h-20 rounded-lg m-1 relative overflow-clip ">
         <div
-          onClick={handleClick}>
+          onClick={handleClick} className='cursor-pointer'>
 
           {isVideo(pageThumbnail) ?
-            <video muted playsinline loop autoplay ref={videoRef} src={pageThumbnail} id="video" className='cursor-pointer w-full object-cover'>
+            <video muted playsinline loop autoplay ref={videoRef} src={pageThumbnail} id="video" className='w-full object-cover'>
             </video>
 
-            : <LazyImage src={pageThumbnail} className='cursor-pointer w-full object-cover' />
+            : <LazyImage src={pageThumbnail} className='w-full object-cover' />
+            
           }
+          <div className="w-full h-28 bg-gradient-to-t from-[#00000077] via-[#00000033] backdrop-blur-0 absolute left-0 bottom-0" ></div>
         </div>
 
-        <h2 className="font-medium w-full bg-black bg-opacity-25 backdrop-blur-sm  text-md absolute left-0 bottom-0 p-4  text-white dark:text-gray-100">
+        <h2 className="font-medium text-md absolute left-0 bottom-0 p-4 text-white dark:text-gray-100">
           {/* <NotionIcon icon={post.pageIcon} />  */}
           <Link href={url} passHref legacyBehavior>
             {post?.title}
@@ -130,17 +132,13 @@ const BlogPost = (props) => {
         {/* 文章tag */}
         <div className="flex absolute left-0 top-0 m-4">
           {post.tagItems && (
-            <div className="flex justify-center flex-nowrap overflow-x-auto gap-1">
+            <div className="flex  flex-wrap overflow-x-auto  ">
               {post.tagItems.map(tag => (
                 <TagItemMini key={tag.name} tag={tag} />
               ))}
             </div>
           )}
-          {/* {post.tagItems?.map(tag => (
-            <div className='px-2 py-1 mx-1 text-xs rounded-lg bg-white bg-opacity-40 hover:bg-black dark:hover:bg-black text-dark-700 hover:text-white duration-200'>
-              {tag.name}
-            </div>
-          ))} */}
+
         </div>
 
 

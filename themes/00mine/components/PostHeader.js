@@ -80,7 +80,7 @@ export default function PostHeader({ post, siteInfo }) {
   }, [isVisible]);
 
   return (
-    <div id="header" className="w-full h-60 relative md:flex-shrink-0 z-10" >
+    <div id="header" className="w-full sm:h-60 md:h-96 relative md:flex-shrink-0 z-10" >
       {isVideo(headerImage) ?
           <video muted playsinline loop autoplay  src={headerImage} id="video" ref={videoRef} className=' w-full h-full object-center object-cover'>
           </video>

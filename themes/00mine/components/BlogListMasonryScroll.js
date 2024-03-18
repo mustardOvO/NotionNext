@@ -7,7 +7,6 @@ import imagesLoaded from 'imagesloaded';
 import BlogPost from './BlogPost'
 import dynamic from 'next/dynamic'
 import NotionPage from '@/components/NotionPage'
-import Announcement from './Announcement'
 import { useHexoGlobal } from '..' //删掉
 
 
@@ -35,7 +34,7 @@ const BlogListScroll = props => {
   }
   const handleGetMore = () => {
     //if (!hasMore) return
-    updatepostnum(postnum + 3)
+    updatepostnum(postnum + 5)
   }
 
   const targetRef = useRef(null)

@@ -7,7 +7,7 @@ const TagItemMini = ({ tag, selected = false }) => {
       href={selected ? '/' : `/tag/${encodeURIComponent(tag.name)}`}
       passHref
        
-      className={`cursor-pointer inline-block mr-2 py-1 px-2 text-xs whitespace-nowrap 
+      className={`cursor-pointer inline-block mr-1 mb-1 py-1 px-2 text-xs whitespace-nowrap 
       rounded-lg bg-white bg-opacity-50 backdrop-blur-sm  
       hover:bg-black dark:hover:bg-black text-gray-700 hover:text-white duration-200` }
         >

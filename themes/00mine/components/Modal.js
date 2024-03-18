@@ -38,14 +38,9 @@ export default function Modal(props) {
 
 
 
-
-
-
-
-
     return (
         <Transition.Root show={showModal} as={Fragment}>
-            <Dialog as="div" className="relative z-20" initialFocus={cancelButtonRef} onClose={handleClose}>
+            <Dialog as="div" className="relative z-20"  onClose={handleClose}>
                 {/* 遮罩 */}
                 <Transition.Child
                     as={Fragment}
@@ -70,7 +65,7 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 translate-y-0 scale-100  max-w-screen"
                             leaveTo="opacity-0 translate-y-4 scale-50 w-0"
                         >
-                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl mx-10 text-left shadow-xl transition-all ">
+                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl text-left shadow-xl transition-all ">
                             <PostHeader post={modalContent} {...props} />
 
 
