@@ -28,11 +28,12 @@ const Hero = props => {
       changeType(
         new Typed('#typed', {
           strings: GREETING_WORDS,
-          typeSpeed: 200,
+          typeSpeed: 100,
           backSpeed: 100,
           backDelay: 400,
+          
           showCursor: false,
-          smartBackspace: true
+          initFadeOut: true
         })
       )
     }
@@ -58,10 +59,14 @@ const Hero = props => {
 
             <div className="text-white absolute bottom-0 flex flex-col h-full items-center justify-center w-full ">
                 {/* 站点标题 */}
-                <div className='font-black text-4xl md:text-5xl shadow-text'>{siteConfig('TITLE')}</div>
+                <div className='font-hero font-medium text-5xl text-[#ebe19fcc] tracking-wide'>
+                  {/* {siteConfig('TITLE')} */}
+                  MustardO<a className="font-[Glory]">v</a>O
+                </div>
                 {/* 站点欢迎语 */}
-                <div className='mt-2 h-12 items-center text-center font-medium shadow-text text-lg'>
-                    <span id='typed' />
+                <div className='flex gap-1 font-[ZoomlaMengyas-A080] text-[#dbe6c9] tracking-wide mt-8 mb-12 items-center text-center text-7xl '>
+                    {/* <span id='typed' /> */}
+                    芥末味汽水<a className="text-5xl">儿</a> 
                 </div>
 
                 {/* 首页导航大按钮 */}
