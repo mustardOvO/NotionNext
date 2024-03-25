@@ -14,7 +14,7 @@ import { useHexoGlobal } from '..' //删掉
 const BlogListScroll = props => {
   const { posts, notice, allPages} = props
   const { locale } = useGlobal()
-  const [postnum, updatepostnum] = useState(9)
+  const [postnum, updatepostnum] = useState(4)
   // let postnum=parseInt(siteConfig('POSTS_PER_PAGE'))
 
   //删掉这段————————
@@ -25,7 +25,7 @@ const BlogListScroll = props => {
 
   let hasMore = false
   const postsToShow = posts
-    ? Object.assign(posts).slice(0, postnum<8? 8:postnum)
+    ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
     : []
 
   if (posts) {
@@ -34,7 +34,7 @@ const BlogListScroll = props => {
   }
   const handleGetMore = () => {
     //if (!hasMore) return
-    updatepostnum(postnum + 5)
+    updatepostnum(postnum + 3)
   }
 
   const targetRef = useRef(null)
@@ -51,14 +51,15 @@ const BlogListScroll = props => {
                 columnWidth: '.grid-sizer',
                 gutter: 0,
                 percentPosition: true,
-                //transitionDuration: '0.8s'
-                //initLayout: false,
+                stagger: 30,
+                // transitionDuration: '0.8s'
+                // initLayout: false,
                 // horizontalOrder: true,
             });
 
             imagesLoaded( gridRef.current ).on( 'progress', function() {
               // layout Masonry after each image loads
-              masonryRef.current.layout();
+              // masonryRef.current.layout();
             });
         }
     };
@@ -69,17 +70,18 @@ const BlogListScroll = props => {
 
   // 监听滚动自动分页加载
   const scrollTrigger = useCallback(throttle(() => {
+    masonryRef.current.layout();
     const scrollS = window.scrollY + window.outerHeight
     const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
     
-    if (scrollS > clientHeight-100) {
+    if (scrollS > clientHeight+100) {
       handleGetMore()
       imagesLoaded( gridRef.current ).on( 'progress', function() {
         // layout Masonry after each image loads
         masonryRef.current.layout();
       });
     }
-  }, 200))
+  }, 100))
 
 
     
@@ -100,7 +102,7 @@ const BlogListScroll = props => {
       <div ref={targetRef}>
         
 
-        <div className="grid" ref={gridRef}>
+        <div className="grid pb-32"  ref={gridRef}>
           <div className="grid-sizer"></div>
               {postsToShow.map((post, index) => (
                 <BlogPost index={index} key={post.id} className="grid-item" post={post} {...props} />
@@ -109,7 +111,7 @@ const BlogListScroll = props => {
 
         <div
             onClick={handleGetMore}
-            className="w-full my-4 py-4 text-center cursor-pointer dark:text-gray-500"
+            className="w-full my-4 pt-4 pb-20 text-center cursor-pointer dark:text-gray-500"
         >
             {' '}
             {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} `}{' '}

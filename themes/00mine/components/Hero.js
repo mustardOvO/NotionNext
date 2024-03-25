@@ -64,9 +64,9 @@ const Hero = props => {
                   MustardO<a className="font-[Glory]">v</a>O
                 </div>
                 {/* 站点欢迎语 */}
-                <div className='flex gap-1 font-[ZoomlaMengyas-A080] text-[#dbe6c9] tracking-wide mt-8 mb-12 items-center text-center text-7xl '>
+                <div className='font-[ZoomlaMengyas-A080] text-[#dbe6c9] tracking-wide mt-8 mb-12 items-top text-center text-7xl '>
                     {/* <span id='typed' /> */}
-                    芥末味汽水<a className="text-5xl">儿</a> 
+                    芥末味汽水<a className="text-5xl "> 儿</a> 
                 </div>
 
                 {/* 首页导航大按钮 */}

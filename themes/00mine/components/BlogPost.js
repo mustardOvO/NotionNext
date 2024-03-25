@@ -94,16 +94,22 @@ const BlogPost = (props) => {
   return (
     <div
 
-      data-aos-delay={`${delay}`}
-      data-aos-offset="-1000"
+      // data-aos-delay={`${delay}`}
+      data-aos-offset="-200"
       data-aos="fade-up"
       data-aos-duration="300"
       data-aos-once="false"
-      data-aos-anchor-placement="top-bottom"
+      data-aos-anchor-placement="bottom-bottom"
+      //data-wow-delay="2s"
+      // data-wow-offset="30"
+      
+      
+
+
       key={post?.id}
       //display-order="0"
-      //class="grid-item"
-      className='grid-item  w-full rounded-lg relative'>
+      //class="grid-item" 
+      className='grid-item  w-full rounded-lg relative '>
 
       <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray border dark:border-gray-800 min-h-20 rounded-lg m-1 relative overflow-clip ">
         <div
