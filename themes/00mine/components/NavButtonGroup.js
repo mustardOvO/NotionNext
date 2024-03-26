@@ -20,7 +20,7 @@ const NavButtonGroup = (props) => {
             title={`${category.name}`}
             href={`/category/${category.name}`}
             passHref
-            className='text-center w-full sm:w-4/5 md:mx-6 md:w-40 md:h-14 lg:h-20 h-14 justify-center items-center flex border border-color-red  cursor-pointer rounded-lg glassmorphism hover:bg-white hover:text-black duration-200 transform'>
+            className='text-center text-white w-full sm:w-4/5 md:mx-6 md:w-40 md:h-14 lg:h-20 h-14 justify-center items-center flex border  cursor-pointer rounded-lg glassmorphism hover:bg-white hover:text-black duration-200 transform'>
                {category.name}
             </Link>
         )

@@ -52,22 +52,30 @@ const Style = () => {
 
     // 自定义滚动条
     ::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
+        width: 10px;
+        
     }
 
     ::-webkit-scrollbar-track {
         background: transparent;
+        color: #337799;
+        border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: #49b1f5;
+        background: #334455; 
+        border-radius: 10px;
     }
 
-    * {
-        scrollbar-width:thin;
-        scrollbar-color: #49b1f5 transparent
-    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #445566; 
+      }
+
+    // * {
+    //     // scrollbar-width:thin;
+    //     scrollbar-color: #334455 transparent
+        
+    // }
     
     //masonry
     .grid{}

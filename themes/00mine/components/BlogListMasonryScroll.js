@@ -14,7 +14,7 @@ import { useHexoGlobal } from '..' //删掉
 const BlogListScroll = props => {
   const { posts, notice, allPages} = props
   const { locale } = useGlobal()
-  const [postnum, updatepostnum] = useState(4)
+  const [postnum, updatepostnum] = useState(9)
   // let postnum=parseInt(siteConfig('POSTS_PER_PAGE'))
 
   //删掉这段————————
@@ -34,7 +34,7 @@ const BlogListScroll = props => {
   }
   const handleGetMore = () => {
     //if (!hasMore) return
-    updatepostnum(postnum + 3)
+    updatepostnum(postnum + 5)
   }
 
   const targetRef = useRef(null)

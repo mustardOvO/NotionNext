@@ -55,7 +55,7 @@ export default function Modal(props) {
                 </Transition.Child>
 
                 <div className="fixed inset-0 z-30 overflow-y-auto items-center">
-                    <div className="flex min-h-full justify-center p-4 text-center items-center">
+                    <div className="flex min-h-full justify-center py-4 px-4 sm:px-8 md:px-6 text-center items-center">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -69,7 +69,7 @@ export default function Modal(props) {
                             <PostHeader post={modalContent} {...props} />
 
 
-                                <section className='px-8 pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
+                                <section className='px-2 pt-2 sm:px-8 sm:pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
                                     {/* <div className="font-medium text-3xl text-black dark:text-white">
                                         {modalContent?.title}
                                     </div>
