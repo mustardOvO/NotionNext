@@ -1,18 +1,12 @@
 import { useGlobal } from '@/lib/global'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import CategoryGroup from './CategoryGroup'
 import Logo from './Logo'
-import SearchDrawer from './SearchDrawer'
-import TagGroups from './TagGroups'
-import { MenuListTop } from './MenuListTop'
 import throttle from 'lodash.throttle'
-import SideBar from './SideBar'
-import SideBarDrawer from './SideBarDrawer'
 import { siteConfig } from '@/lib/config'
-import SearchButton from './SearchButton'
 import CONFIG from '../config'
 import { useRouter } from 'next/router'
+import { MenuItemDrop } from './MenuItemDrop'
 
 let windowTop = 0
 
@@ -22,20 +16,12 @@ let windowTop = 0
  * @returns
  */
 const TopNav = props => {
-  const searchDrawer = useRef()
-  const { tags, currentTag, categories, currentCategory } = props
+  const { customNav, customMenu } = props
+  const links = customMenu
   const { locale } = useGlobal()
   const router = useRouter()
-  const [isOpen, changeShow] = useState(false)
-  const showSearchButton = siteConfig('HEXO_MENU_SEARCH', false, CONFIG)
 
-  const toggleMenuOpen = () => {
-    changeShow(!isOpen)
-  }
 
-  const toggleSideBarClose = () => {
-    changeShow(false)
-  }
 
   // 监听滚动
   useEffect(() => {
@@ -56,20 +42,18 @@ const TopNav = props => {
     // 首页和文章页会有头图
     const header = document.querySelector('#header')
     // 导航栏和头图是否重叠
-    const scrollInHeader = header && (scrollS < 10 || scrollS < header?.clientHeight - 50) // 透明导航条的条件
-
-    // const textWhite = header && scrollInHeader
+    const scrollInHeader = (scrollS < 10 || scrollS < header?.clientHeight - 50) // 透明导航条的条件
 
     if (scrollInHeader) {
-      nav && nav.classList.replace('bg-white', 'bg-none')
+      // nav && nav.classList.replace('bg-white', 'bg-none')
       nav && nav.classList.replace('border', 'border-transparent')
       nav && nav.classList.replace('drop-shadow-md', 'shadow-none')
-      nav && nav.classList.replace('dark:bg-hexo-black-gray', 'transparent')
+      // nav && nav.classList.replace('dark:bg-hexo-black-gray', 'transparent')
     } else {
-      nav && nav.classList.replace('bg-none', 'bg-white')
+      // nav && nav.classList.replace('bg-none', 'bg-white')
       nav && nav.classList.replace('border-transparent', 'border')
       nav && nav.classList.replace('shadow-none', 'drop-shadow-md')
-      nav && nav.classList.replace('transparent', 'dark:bg-hexo-black-gray')
+      // nav && nav.classList.replace('transparent', 'dark:bg-hexo-black-gray')
     }
 
     if (scrollInHeader) {
@@ -90,70 +74,53 @@ const TopNav = props => {
   }, throttleMs)
   )
 
-  const searchDrawerSlot = <>
-        {categories && (
-            <section className='mt-8'>
-                <div className='text-sm flex flex-nowrap justify-between font-light px-2'>
-                    <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-th-list' />{locale.COMMON.CATEGORY}</div>
-                    <Link
-                        href={'/category'}
-                        passHref
-                        className='mb-3 text-gray-400 hover:text-black dark:text-gray-400 dark:hover:text-white hover:underline cursor-pointer'>
+  //导航icon缩放
+  const [containerWidth, setContainerWidth] = useState(null);
 
-                        {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        const { width } = entry.contentRect;
+        setContainerWidth(width);
+      }
+    });
 
-                    </Link>
-                </div>
-                <CategoryGroup currentCategory={currentCategory} categories={categories} />
-            </section>
-        )}
+    resizeObserver.observe(document.getElementById('flex-container'));
 
-        {tags && (
-            <section className='mt-4'>
-                <div className='text-sm py-2 px-2 flex flex-nowrap justify-between font-light dark:text-gray-200'>
-                    <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-tag' />{locale.COMMON.TAGS}</div>
-                    <Link
-                        href={'/tag'}
-                        passHref
-                        className='text-gray-400 hover:text-black  dark:hover:text-white hover:underline cursor-pointer'>
+    return () => resizeObserver.disconnect();
+  }, []);
 
-                        {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
+  
+// ______________________________________________________
 
-                    </Link>
-                </div>
-                <div className='p-2'>
-                    <TagGroups tags={tags} currentTag={currentTag} />
-                </div>
-            </section>
-        )}
-    </>
 
-  return (<div id='top-nav' className='z-40'>
-        <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot} />
+  return (<div id='top-nav' className='z-40 w-full object-right bg-none'>
 
-        {/* 导航栏 */}
-        <div id='sticky-nav' style={{ backdropFilter: 'blur(3px)' }} className={'bottom-0 duration-300 transition-all  shadow-none fixed bg-none dark:bg-hexo-black-gray dark:text-gray-200 text-black w-full z-20 transform border-transparent dark:border-transparent'}>
-            <div className='w-full flex justify-between items-center px-4 py-2'>
-                <div className='flex'>
-                    <Logo {...props} />
-                </div>
+    {/* 导航栏 */}
+    <div id='sticky-nav' className="'relative  top-0 fixed p-4  object-center
+        dark:text-gray-200 text-black w-full z-20 
+        transform duration-300 transition-all'">
 
-                {/* 右侧功能 */}
-                <div className='mr-1 flex justify-end items-center '>
-                    <div className='hidden lg:flex'> <MenuListTop {...props} /></div>
-                    <div onClick={toggleMenuOpen} className='w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden'>
-                        {isOpen ? <i className='fas fa-times' /> : <i className='fas fa-bars' />}
-                    </div>
-                    {showSearchButton && <SearchButton />}
-                </div>
-            </div>
+      {/* 功能 */}
+      <div className=' w-full flex items-center justify-center '>
+        <div id="flex-container" className="p-1 w-fit rounded-full backdrop-blur-sm 
+                bg-gray-700/10 dark:bg-transparent border border-indigo-300/30 dark:text-gray-200 text-black
+                flex gap-2 justify-center items-center transition">
+          
+          {/* <div > <MenuListTop {...props} /></div> */}
+
+            {links?.map((link, index) => link && link.show && <MenuItemDrop  key={index} link={link} />)}
+
+          <Logo {...props} />
+        
         </div>
+      </div>
 
-        {/* 折叠侧边栏 */}
-        <SideBarDrawer isOpen={isOpen} onClose={toggleSideBarClose}>
-            <SideBar {...props} />
-        </SideBarDrawer>
-    </div>)
+
+
+    </div>
+
+  </div>)
 }
 
 export default TopNav

@@ -59,7 +59,7 @@ const BlogListScroll = props => {
 
             imagesLoaded( gridRef.current ).on( 'progress', function() {
               // layout Masonry after each image loads
-              // masonryRef.current.layout();
+              masonryRef.current.layout();
             });
         }
     };

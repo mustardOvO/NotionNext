@@ -59,9 +59,10 @@ const Hero = props => {
 
             <div className=" absolute flex flex-col h-full items-center mt-20 mb-8 sm:mt-0 sm:items-top justify-top sm:justify-center w-full ">
                 {/* 站点标题 */}
-                <div className='font-hero font-medium text-2xl md:text-4xl text-[#ebe19fcc] tracking-wide'>
-                  {/* {siteConfig('TITLE')} */}
-                  MustardO<a className="font-[Glory]">v</a>O
+                <div className='font-hero font-medium text-2xl sm:text-4xl text-[#ebe19fcc] tracking-wide'>
+                  {siteConfig('TITLE')}
+                  {/* MustardO<a className="font-[Glory]">v</a>O */}
+                  {/* MustardOvO */}
                 </div>
                 {/* 站点欢迎语 */}
                 <div className='font-[ZoomlaMengyas-A080] text-[#dbe6c9] tracking-wide mt-8 mb-12 items-top text-center text-5xl sm:text-7xl '>

@@ -22,11 +22,13 @@ const Style = () => {
         background-position: bottom center;
         background-size: 0 2px;
         transition: background-size 100ms ease-in-out;
+        transition: color 100ms ease-in-out;
+        // color: #ffffff77;
     }
     
     #theme-hexo .menu-link:hover {
-        background-size: 100% 2px;
-        color: #928CEE;
+        
+        color: #BCBF60;
     }
 
     /* 设置了从上到下的渐变黑色 */
@@ -58,17 +60,17 @@ const Style = () => {
 
     ::-webkit-scrollbar-track {
         background: transparent;
-        color: #337799;
+        color: #33779944;
         border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #334455; 
+        background: #66778844; 
         border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #445566; 
+        background: #77889966; 
       }
 
     // * {

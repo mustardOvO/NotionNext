@@ -19,10 +19,13 @@ export default function SlotBar(props) {
 
   else if (category) {
     //分类标题
-    return <div className="grid grid-col gap-6 justify-center font-bold text-3xl  text-center tracking-wide px-5 pb-12   transform text-gray-800 dark:text-white">
+    return <div className="grid grid-col gap-6 px-5 py-12 transform justify-center ">
 
-      <div>{category}</div>
-      <div className="w-px h-20 justify-self-center bg-dark-200 dark:bg-dark-3"></div>
+      <div className="font-title text-3xl  text-center tracking-wide 
+    text-gray-800 dark:text-white">{category}</div>
+
+      {/* 分割线 */}
+      <div className="w-px h-20 justify-self-center  bg-dark-200 dark:bg-dark-3"></div>
     </div>
   }
   return <></>

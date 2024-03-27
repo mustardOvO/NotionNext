@@ -51,6 +51,7 @@ const BLOG = {
       // 字体CSS 例如 https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css
       FONT_URL: [
             //     'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
+            //得意黑
             'https://mustardovopic.oss-cn-hangzhou.aliyuncs.com/font/SmileySans-Oblique/result.css',
             //逐浪萌芽字
             'https://mustardovopic.oss-cn-hangzhou.aliyuncs.com/font/%E9%80%90%E6%B5%AA%E8%90%8C%E8%8A%BD%E5%AD%97/result.css',
@@ -58,7 +59,8 @@ const BLOG = {
             'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
             'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap',
             'https://fonts.gstatic.com" crossorigin',
-            'https://fonts.googleapis.com/css2?family=Amarante&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Kalnia:wght@100..700&family=Katibeh&family=Poller+One&family=Glory:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"'
+            'https://fonts.googleapis.com/css2?family=Amarante&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Kalnia:wght@100..700&family=Katibeh&family=Poller+One&family=Glory:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"',
+            'https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300&display=swap'
       ],
       // 无衬线字体 例如'"LXGW WenKai"'
       FONT_SANS: [
@@ -98,14 +100,19 @@ const BLOG = {
 
       FONT_HERO: [
             //'"Smiley Sans Oblique"',
+            '"Big Shoulders Stencil Display"',
             '"Expletus Sans"',
             '"Katibeh"',
             '"Glory"',
             'ZoomlaMengyas-A080s'
 
       ],
-      FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', // font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
 
+      FONT_TITLE: [
+            '"Smiley Sans Oblique"',
+      ],
+      FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', // font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
+      // FONT_AWESOME: 'https://www.iconfont.cn/',
       // END ************网站字体*****************
 
       // 路径和组件映射，不同路径分别展示主题的什么组件

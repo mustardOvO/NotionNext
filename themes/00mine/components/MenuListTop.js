@@ -2,6 +2,7 @@ import { useGlobal } from '@/lib/global'
 import CONFIG from '../config'
 import { siteConfig } from '@/lib/config'
 import { MenuItemDrop } from './MenuItemDrop'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const MenuListTop = (props) => {
   const { customNav, customMenu } = props
@@ -34,9 +35,12 @@ export const MenuListTop = (props) => {
     return null
   }
 
+
+
+
   return (<>
-        <nav id='nav-mobile' className='leading-8 justify-center font-light w-full flex'>
-            {links?.map((link, index) => link && link.show && <MenuItemDrop key={index} link={link} />)}
+        <nav  className='justify-center font-light w-full flex gap-2' >
+            {links?.map((link, index) => link && link.show && <MenuItemDrop  key={index} link={link} />)}
         </nav>
     </>)
 }

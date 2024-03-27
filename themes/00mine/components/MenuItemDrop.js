@@ -9,33 +9,15 @@ export const MenuItemDrop = ({ link }) => {
     return null
   }
 
-  return <div onMouseOver={() => changeShow(true)} onMouseOut={() => changeShow(false)} >
+  return <div className="size-10  justify-center flex justify-content bg-white/30 dark:bg-white/10  rounded-full hover:scale-125 duration-200"  onMouseOver={() => changeShow(true)} onMouseOut={() => changeShow(false)} >
+    <Link
+                href={link?.to} target={link?.to?.indexOf('http') === 0 ? '_blank' : '_self'} 
+                className="w-full  rounded-full leading-10 no-underline tracking-wide text-xl text-gray-400/50 dark:text-gray-400 text-center align-middle 
+                hover:bg-white dark:hover:bg-white/20 hover:text-[#BCBF60] dark:hover:text-[#BCBF60] duration-200">
+                {link?.icon && <i className={link?.icon}/>} 
+                {!link?.icon && link?.name}
+            </Link>
 
-        {!hasSubMenu &&
-            <Link
-                href={link?.to} target={link?.to?.indexOf('http') === 0 ? '_blank' : '_self'}
-                className=" menu-link pl-2 pr-4 no-underline tracking-widest pb-1">
-                {link?.icon && <i className={link?.icon}/>} {link?.name}
-                {hasSubMenu && <i className='px-2 fa fa-angle-down'></i>}
-            </Link>}
-
-        {hasSubMenu && <>
-            <div className='cursor-pointer  menu-link pl-2 pr-4  no-underline tracking-widest pb-1'>
-                {link?.icon && <i className={link?.icon}/>} {link?.name}
-                <i className={`px-2 fa fa-angle-down duration-300  ${show ? 'rotate-180' : 'rotate-0'}`}></i>
-            </div>
-        </>}
-
-        {/* 子菜单 */}
-        {hasSubMenu && <ul style={{ backdropFilter: 'blur(3px)' }} className={`${show ? 'visible opacity-100 top-12' : 'invisible opacity-0 top-20'} drop-shadow-md overflow-hidden rounded-md text-black dark:text-white bg-white dark:bg-black transition-all duration-300 z-20 absolute block  `}>
-            {link.subMenus.map((sLink, index) => {
-              return <li key={index} className='cursor-pointer hover:bg-indigo-300 hover:text-black tracking-widest transition-all duration-200 dark:border-gray-800  py-1 pr-6 pl-3'>
-                    <Link href={sLink.to} target={link?.to?.indexOf('http') === 0 ? '_blank' : '_self'}>
-                        <span className='text-sm text-nowrap font-extralight'>{link?.icon && <i className={sLink?.icon} > &nbsp; </i>}{sLink.title}</span>
-                    </Link>
-                </li>
-            })}
-        </ul>}
 
     </div>
 }

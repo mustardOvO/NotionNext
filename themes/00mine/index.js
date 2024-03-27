@@ -141,7 +141,7 @@ const LayoutBase = props => {
 
         {/* 主区块 */}
 
-        <main id="wrapper" className={`${siteConfig('HEXO_HOME_BANNER_ENABLE', null, CONFIG) ? '' : 'pt-16'} bg-hexo-background-grey dark:bg-hexo-background-black w-full py-8 md:px-8 lg:px-8 min-h-screen  relative`}>
+        <main id="wrapper" className={` bg-hexo-background-grey dark:bg-hexo-background-black w-full py-12 md:px-8 lg:px-8 min-h-screen  relative`}>
           <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-0 flex  justify-center relative z-10'} >
             <div className={`${className || ''} w-full ${fullWidth ? '' : ''} h-full overflow-hidden`}>
 
@@ -312,10 +312,10 @@ const LayoutSlug = props => {
             </section>
 
             {/* 分享 */}
-            <ShareBar post={post} />
+            {/* <ShareBar post={post} /> */}
             {post?.type === 'Post' && <>
-              <ArticleCopyright {...props} />
-              <ArticleRecommend {...props} />
+              {/* <ArticleCopyright {...props} />
+              <ArticleRecommend {...props} /> */}
               <ArticleAdjacent {...props} />
             </>}
 

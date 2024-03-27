@@ -8,6 +8,7 @@ import LazyImage from '@/components/LazyImage'
 import { compressImage } from '@/lib/notion/mapImage'
 import NotionPage from '@/components/NotionPage'
 import PostHeader from './PostHeader'
+import { Close } from '@carbon/icons-react';
 
 
 
@@ -65,8 +66,10 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 translate-y-0 scale-100  max-w-screen"
                             leaveTo="opacity-0 translate-y-4 scale-50 w-0"
                         >
-                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl text-left shadow-xl transition-all ">
-                            <PostHeader post={modalContent} {...props} />
+                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl border border-zinc-800 text-left shadow-xl transition-all ">
+                                <Close fill="#ffffff77" size="24" className="absolute w-6 h-6 p-1 cursor-pointer sm:w-8 sm:h-8 top-2 right-2 bg-white/20 rounded-full z-30 " onClick={handleClose}/>
+                                <PostHeader post={modalContent} {...props} />
+                                
 
 
                                 <section className='px-2 pt-2 sm:px-8 sm:pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
@@ -77,11 +80,9 @@ export default function Modal(props) {
                                         {modalContent?.publishDay}
                                     </div> */}
 
-                                    
-                                    
-
                                     <NotionPage post={modalContent} />
                                 </section>
+                                
 
 
                             </Dialog.Panel>
