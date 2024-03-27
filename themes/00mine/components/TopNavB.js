@@ -7,6 +7,7 @@ import { siteConfig } from '@/lib/config'
 import CONFIG from '../config'
 import { useRouter } from 'next/router'
 import { MenuItemDrop } from './MenuItemDrop'
+import { debounce } from 'lodash';
 
 let windowTop = 0
 
@@ -75,20 +76,62 @@ const TopNav = props => {
   )
 
   //导航icon缩放
-  const [containerWidth, setContainerWidth] = useState(null);
+  // const handleMouseEnter = () => {
+  //   const elements = document.querySelectorAll('.nav-item');
+  //   elements.forEach(element => {
+  //     element.style.height = '4rem';
+  //     element.style.width = '4rem';
+  //   });
+  // };
+  const [hoveredElementSize, setHoveredElementSize] = useState(100);
+  const containerRef = useRef(null);
 
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => {
-      for (let entry of entries) {
-        const { width } = entry.contentRect;
-        setContainerWidth(width);
-      }
+  // const handleMouseOver = (e) => {
+  //   const elementId = e.target.id;
+  //   const updatedChildElements = childElements.map((child) => {
+  //     const newSize = elementId === `child-${child.id}` ? 150 : 100; // Adjust sizes as needed
+  //     return { ...child, size: newSize };
+  //   });
+  //   setChildElements(updatedChildElements);
+  // };
+
+  // const handleMouseMove = debounce((e) => {
+  //   setChildElements(prevChildElements => {
+  //     const mouseX = e.clientX;
+  //     const mouseY = e.clientY;
+  //     const updatedChildElements = prevChildElements.map((child) => {
+  //       const element = document.getElementById(`child-${child.id}`);
+  //       const rect = element.getBoundingClientRect();
+  //       const distance = Math.sqrt(Math.pow(mouseX - rect.left, 2) + Math.pow(mouseY - rect.top, 2));
+  //       const newSize = 200 - distance * 0.5; // Adjust scaling factor as needed
+  //       return { ...child, size: newSize };
+  //     });
+  //     return updatedChildElements;
+  //   });
+  // }, 10); // Adjust debounce delay as needed
+
+  const handleMouseOver =  debounce((e) => {
+    const container = document.getElementById('nav-container');
+    const containerRect = container.getBoundingClientRect();
+    const mouseX = e.clientX;
+
+    const elements = document.querySelectorAll('.nav-item');
+    elements.forEach(element => {
+      const elementRect = element.getBoundingClientRect();
+      const distance = Math.max(2,0.1*Math.abs(mouseX - (elementRect.left + elementRect.width / 2)));
+      const newSize = 40 + (30 / distance ); // Adjust the scaling factor as needed
+      element.style.width = newSize + 'px';
+      element.style.height = newSize + 'px';
     });
+  }, 10);
 
-    resizeObserver.observe(document.getElementById('flex-container'));
-
-    return () => resizeObserver.disconnect();
-  }, []);
+  const handleMouseLeave = () => {
+    const elements = document.querySelectorAll('.nav-item');
+    elements.forEach(element => {
+      element.style.height = '2.5rem';
+      element.style.width = '2.5rem';
+    });
+  };
 
   
 // ______________________________________________________
@@ -101,15 +144,17 @@ const TopNav = props => {
         dark:text-gray-200 text-black w-full z-20 
         transform duration-300 transition-all'">
 
-      {/* 功能 */}
-      <div className=' w-full flex items-center justify-center '>
-        <div id="flex-container" className="p-1 w-fit rounded-full backdrop-blur-sm 
-                bg-gray-700/10 dark:bg-transparent border border-indigo-300/30 dark:text-gray-200 text-black
-                flex gap-2 justify-center items-center transition">
+      <div className=' w-full h-min flex items-center justify-center '>
+        {/* 按钮 */}
+        <div id="nav-container" className="p-1  rounded-full backdrop-blur-sm 
+                bg-gray-700/10 dark:bg-black/30 border border-indigo-300/30 dark:border-indigo-300/10 dark:text-gray-200 text-black
+                flex  gap-2 justify-center items-center
+                hover:p-2 hover:h-[72px] transition-all duration-200" 
+                onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave} ref={containerRef}>
           
           {/* <div > <MenuListTop {...props} /></div> */}
 
-            {links?.map((link, index) => link && link.show && <MenuItemDrop  key={index} link={link} />)}
+            {links?.map((link, index) => link && link.show && <MenuItemDrop key={index} link={link} />)}
 
           <Logo {...props} />
         

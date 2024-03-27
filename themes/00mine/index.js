@@ -141,8 +141,8 @@ const LayoutBase = props => {
 
         {/* 主区块 */}
 
-        <main id="wrapper" className={` bg-hexo-background-grey dark:bg-hexo-background-black w-full py-12 md:px-8 lg:px-8 min-h-screen  relative`}>
-          <div id="container-inner" className={(JSON.parse(siteConfig('LAYOUT_SIDEBAR_REVERSE')) ? 'flex-row-reverse' : '') + ' w-full mx-0 flex  justify-center relative z-10'} >
+        <main id="wrapper" className={` bg-hexo-background-grey dark:bg-hexo-background-black w-full  min-h-screen  relative`}>
+          <div id="container-inner" className={ ' w-full mx-0 flex  justify-center relative z-10'} >
             <div className={`${className || ''} w-full ${fullWidth ? '' : ''} h-full overflow-hidden`}>
 
               <Transition
@@ -300,14 +300,14 @@ const LayoutSlug = props => {
   }, [post])
   return (
     <>
-      <div className="w-full lg:hover:shadow lg:border rounded-t-xl lg:rounded-xl lg:px-2 lg:py-4 bg-white dark:bg-hexo-black-gray dark:border-black article">
+      <div className="w-full dark:bg-hexo-black-gray article">
         {lock && <ArticleLock validPassword={validPassword} />}
 
-        {!lock && <div id="article-wrapper" className="overflow-x-auto flex-grow mx-auto md:w-full md:px-5 ">
+        {!lock && <div id="article-wrapper" className="w-full  ">
 
           <article itemScope itemType="https://schema.org/Movie" className="subpixel-antialiased overflow-y-hidden" >
             {/* Notion文章主体 */}
-            <section className='px-5 justify-center mx-auto max-w-2xl lg:max-w-full'>
+            <section className='px-2 md:p-6 mx-auto justify-center lg:max-w-5xl'>
               {post && <NotionPage post={post} />}
             </section>
 
@@ -321,7 +321,7 @@ const LayoutSlug = props => {
 
           </article>
 
-          <div className='pt-4 border-dashed'></div>
+          {/* <div className='pt-4 border-dashed'></div> */}
 
         </div>}
       </div>

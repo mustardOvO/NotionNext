@@ -16,7 +16,8 @@ export default function PostHeader({ post, siteInfo }) {
 
   // 文章全屏隐藏标头
   if (fullWidth) {
-    return <div className='my-8' />
+    return 
+    
   }
 
   //const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
@@ -82,7 +83,7 @@ export default function PostHeader({ post, siteInfo }) {
   // 处理是否视频————————————————————
 
   return (
-    <div id="header" className="w-full min-h-60 md:min-h-96 relative md:flex-shrink-0 z-10" >
+    <div id="header" className="w-full min-h-72 md:min-h-96 relative md:flex-shrink-0 z-10" >
       {isVideo(headerImage) ?
           <video muted playsinline loop autoplay  src={headerImage} id="video" ref={videoRef} className='absolute w-full h-full object-center object-cover'>
           </video>
@@ -92,7 +93,7 @@ export default function PostHeader({ post, siteInfo }) {
       {/* <LazyImage priority={true} src={headerImage} className='w-full h-full object-cover object-center absolute top-0' /> */}
 
       <header id='article-header-cover'
-        className="bg-black bg-opacity-70 absolute top-0 p-8 w-full h-full flex justify-center items-center ">
+        className="bg-black bg-opacity-70 absolute top-0 pt-16 pb-8 w-full h-full flex justify-center items-center ">
 
         <div className=' '>
 

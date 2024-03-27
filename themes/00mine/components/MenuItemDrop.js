@@ -9,15 +9,14 @@ export const MenuItemDrop = ({ link }) => {
     return null
   }
 
-  return <div className="size-10  justify-center flex justify-content bg-white/30 dark:bg-white/10  rounded-full hover:scale-125 duration-200"  onMouseOver={() => changeShow(true)} onMouseOut={() => changeShow(false)} >
-    <Link
+  return <Link
                 href={link?.to} target={link?.to?.indexOf('http') === 0 ? '_blank' : '_self'} 
-                className="w-full  rounded-full leading-10 no-underline tracking-wide text-xl text-gray-400/50 dark:text-gray-400 text-center align-middle 
-                hover:bg-white dark:hover:bg-white/20 hover:text-[#BCBF60] dark:hover:text-[#BCBF60] duration-200">
+                className="nav-item size-10 rounded-full  flex justify-center  items-center  no-underline tracking-wide text-xl text-center text-gray-400/50 dark:text-gray-400 text-center align-middle 
+                bg-white/30 dark:bg-gray-300/10 hover:bg-white dark:hover:bg-white/20 hover:text-2xl hover:text-[#BCBF60] dark:hover:text-[#BCBF60] transition duration-200">
                 {link?.icon && <i className={link?.icon}/>} 
                 {!link?.icon && link?.name}
             </Link>
 
 
-    </div>
+
 }
