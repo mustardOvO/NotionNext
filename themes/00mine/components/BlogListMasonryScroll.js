@@ -25,6 +25,8 @@ const BlogListScroll = props => {
 
   let hasMore = false
   const postsToShow = posts
+    ? Object.assign(posts)
+    : []
     // ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
     // : []
 
