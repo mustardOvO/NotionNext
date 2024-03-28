@@ -25,8 +25,8 @@ const BlogListScroll = props => {
 
   let hasMore = false
   const postsToShow = posts
-    ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
-    : []
+    // ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
+    // : []
 
   if (posts) {
     const totalCount = posts.length
@@ -69,31 +69,31 @@ const BlogListScroll = props => {
 
 
   // 监听滚动自动分页加载
-  const scrollTrigger = useCallback(throttle(() => {
-    masonryRef.current.layout();
-    const scrollS = window.scrollY + window.outerHeight
-    const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
+  // const scrollTrigger = useCallback(throttle(() => {
+  //   masonryRef.current.layout();
+  //   const scrollS = window.scrollY + window.outerHeight
+  //   const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
     
-    if (scrollS > clientHeight+100) {
-      handleGetMore()
-      imagesLoaded( gridRef.current ).on( 'progress', function() {
-        // layout Masonry after each image loads
-        masonryRef.current.layout();
-      });
-    }
-  }, 100))
+    // if (scrollS > clientHeight+100) {
+    //   handleGetMore()
+    //   imagesLoaded( gridRef.current ).on( 'progress', function() {
+    //     // layout Masonry after each image loads
+    //     masonryRef.current.layout();
+    //   });
+    // }
+  // }, 100))
 
 
     
 
 
-  useEffect(() => {
-    window.addEventListener('scroll', scrollTrigger)
+  // useEffect(() => {
+  //   window.addEventListener('scroll', scrollTrigger)
 
-    return () => {
-      window.removeEventListener('scroll', scrollTrigger)
-    }
-  })
+  //   return () => {
+  //     window.removeEventListener('scroll', scrollTrigger)
+  //   }
+  // })
 
 
   return (
@@ -110,7 +110,7 @@ const BlogListScroll = props => {
         </div>
 
         <div
-            onClick={handleGetMore}
+            // onClick={handleGetMore}
             className="w-full my-4 pt-4 pb-20 text-center cursor-pointer dark:text-gray-500"
         >
             {' '}
