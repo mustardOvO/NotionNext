@@ -133,12 +133,4 @@ export async function getStaticProps() {
   }
 }
 
-function checkSlug(row) {
-  let slug = row.slug
-  if (slug.startsWith('/')) {
-    slug = slug.substring(1)
-  }
-  return ((slug.match(/\//g) || []).length === 0 && !checkContainHttp(slug)) && row.type.indexOf('Menu') < 0
-}
-
 export default About

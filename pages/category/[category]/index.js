@@ -49,8 +49,6 @@ export async function getStaticProps({ params: { category } }) {
   });
   await Promise.all(tasks);
 
-  
-
   return {
     props,
     revalidate: parseInt(BLOG.NEXT_REVALIDATE_SECOND)
