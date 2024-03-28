@@ -8,7 +8,6 @@ import { getNotion } from '@/lib/notion/getNotion'
 import { getPageTableOfContents } from '@/lib/notion/getPageTableOfContents'
 import { getLayoutByTheme } from '@/themes/theme'
 import md5 from 'js-md5'
-import { checkContainHttp } from '@/lib/utils'
 import { uploadDataToAlgolia } from '@/lib/algolia'
 import { siteConfig } from '@/lib/config'
 
