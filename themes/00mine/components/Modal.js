@@ -56,7 +56,7 @@ export default function Modal(props) {
                 </Transition.Child>
 
                 <div className="fixed inset-0 z-30 overflow-y-auto items-center">
-                    <div className="flex min-h-full justify-center py-4 px-4 sm:px-8 md:px-6 text-center items-center">
+                    <div className="flex min-h-full justify-center p-0 md:px-8 md:py-2 text-center items-center">
                         <Transition.Child
                             as={Fragment}
                             enter="ease-out duration-300"
@@ -66,15 +66,15 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 translate-y-0 scale-100  max-w-screen"
                             leaveTo="opacity-0 translate-y-4 scale-50 w-0"
                         >
-                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-xl border border-zinc-800 text-left shadow-xl transition-all ">
-                                <div className="size-8 fa-solid fa-xmark text-white/60 text-center p-2  absolute top-2 right-2  bg-white/20 cursor-pointer rounded-full z-30 " onClick={handleClose}>
+                            <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-0 md:rounded-xl border border-zinc-800 text-left shadow-xl transition-all ">
+                                <div id="close" className="size-8 fa-solid fa-xmark text-white/60 text-center p-2  absolute top-2 right-2  bg-white/20 cursor-pointer rounded-full z-30 " onClick={handleClose}>
                                     {/* <i className="fa-solid fa-xmark"/> */}
                                 </div>
                                 <PostHeader post={modalContent} {...props} />
                                 
 
 
-                                <section className='px-2 pt-2 sm:px-8 sm:pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
+                                <section className='px-2 pt-2 lg:px-8 lg:pt-4 pb-10 bg-white dark:bg-hexo-black-gray'>
                                     {/* <div className="font-medium text-3xl text-black dark:text-white">
                                         {modalContent?.title}
                                     </div>

@@ -119,7 +119,7 @@ const NotionPage = ({ post, className }) => {
           if (mutation.target.classList.contains('medium-zoom-image--opened')) {
             // 等待动画完成后替换为更高清的图像
             setTimeout(() => {
-            // 获取该元素的 src 属性
+              // 获取该元素的 src 属性
               const src = mutation?.target?.getAttribute('src');
               //   替换为更高清的图像
               mutation?.target?.setAttribute('src', compressImage(src, siteConfig('IMAGE_ZOOM_IN_WIDTH', 1200)));
@@ -155,7 +155,7 @@ const NotionPage = ({ post, className }) => {
         Tweet
       }} />
 
-      <PrismMac/>
+    <PrismMac />
 
   </div>
 }

@@ -22,6 +22,8 @@ export async function getStaticProps({ params: { category } }) {
   const from = 'category-props'
   let props = await getGlobalData({ from })
 
+  props = { ...props, category }
+
   // 过滤状态
   props.posts = props.allPages?.filter(page => page.type === 'Post' && page.status === 'Published')
   // 处理过滤
@@ -38,16 +40,16 @@ export async function getStaticProps({ params: { category } }) {
   delete props.allPages
 
   // 脏东西————————————
-  console.log(Object.keys(props.posts[0]))
-  console.log(props.posts[0].id)
-  console.log(props.posts[0].slug)
+  // console.log(Object.keys(props.posts[0]))
+  // console.log(props.posts[0].id)
+  // console.log(props.posts[0].slug)
   const tasks = props.posts.map(async p => {
     const block = await getPostBlocks(p.id)
     p.blockMap = block;
   });
   await Promise.all(tasks);
 
-  props = { ...props, category }
+  
 
   return {
     props,

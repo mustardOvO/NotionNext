@@ -16,7 +16,7 @@ export default function PostHeader({ post, siteInfo }) {
 
   // 文章全屏隐藏标头
   if (fullWidth) {
-    return 
+    return <div className="h-20"/>
     
   }
 

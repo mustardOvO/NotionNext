@@ -35,9 +35,9 @@ export async function getStaticProps({ params: { tag } }) {
   }
 
   // 脏东西————————————
-  console.log(Object.keys(props.posts[0]))
-  console.log(props.posts[0].id)
-  console.log(props.posts[0].slug)
+  // console.log(Object.keys(props.posts[0]))
+  // console.log(props.posts[0].id)
+  // console.log(props.posts[0].slug)
   const tasks = props.posts.map(async p => {
     const block = await getPostBlocks(p.id)
     p.blockMap = block;

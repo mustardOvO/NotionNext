@@ -12,16 +12,19 @@ const NavButtonGroup = (props) => {
   }
 
   return (
-    <nav id='home-nav-button' className={'w-full z-10 md:h-72 md:mt-6 xl:mt-32 px-5 py-2 mt-8 flex flex-wrap md:max-w-6xl space-y-2 md:space-y-0 md:flex justify-center max-h-80 overflow-auto'}>
+    <nav id='home-nav-button' className="w-fit mt-20 flex flex-col gap-4 sm:gap-12">
       {categoryOptions?.map(category => {
         return (
           <Link
             key={`${category.name}`}
             title={`${category.name}`}
             href={`/category/${category.name}`}
-            passHref
-            className='text-center text-white w-full sm:w-4/5 md:mx-6 md:w-40 md:h-14 lg:h-20 h-14 justify-center items-center flex border  cursor-pointer rounded-lg glassmorphism hover:bg-white hover:text-black duration-200 transform'>
+            className='group font-title hover:tracking-widest text-center text-2xl sm:text-3xl text-nowrap text-[#ebe19fcc] hover:text-[#dbe6c9]
+            w-full  justify-center items-center flex flex-nowrap content-center gap-4 
+            cursor-pointer  duration-200 transition-all'>
+               <div className="text-xl fas fa-caret-right  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
                {category.name}
+               <div className=" text-xl fas fa-caret-left  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
             </Link>
         )
       })}

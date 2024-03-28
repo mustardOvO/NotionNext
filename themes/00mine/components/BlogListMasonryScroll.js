@@ -102,7 +102,7 @@ const BlogListScroll = props => {
       <div ref={targetRef}>
         
 
-        <div className="grid pb-32"  ref={gridRef}>
+        <div className="grid pb-32 w-full mx-auto max-w-[1800px]"  ref={gridRef}>
           <div className="grid-sizer"></div>
               {postsToShow.map((post, index) => (
                 <BlogPost index={index} key={post.id} className="grid-item" post={post} {...props} />

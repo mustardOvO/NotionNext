@@ -1,7 +1,7 @@
 import CONFIG from './config'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import Footer from './components/Footer'
-import SideRight from './components/SideRight'
+import SocialButton from './components/SocialButton'
 import TopNav from './components/TopNav'
 import TopNavB from './components/TopNavB'
 import { useGlobal } from '@/lib/global'
@@ -142,7 +142,7 @@ const LayoutBase = props => {
         {/* 主区块 */}
 
         <main id="wrapper" className={` bg-hexo-background-grey dark:bg-hexo-background-black w-full  min-h-screen  relative`}>
-          <div id="container-inner" className={ ' w-full mx-0 flex  justify-center relative z-10'} >
+          <div id="container-inner" className={' w-full mx-0 flex  justify-center relative z-10'} >
             <div className={`${className || ''} w-full ${fullWidth ? '' : ''} h-full overflow-hidden`}>
 
               <Transition
@@ -300,7 +300,7 @@ const LayoutSlug = props => {
   }, [post])
   return (
     <>
-      <div className="w-full dark:bg-hexo-black-gray article">
+      <div className="w-full  article">
         {lock && <ArticleLock validPassword={validPassword} />}
 
         {!lock && <div id="article-wrapper" className="w-full  ">
@@ -426,21 +426,50 @@ const LayoutTagIndex = props => {
  * @param {*} props
  * @returns
  */
-const LayoutAbout111 = (props) => {
-  const { archivePosts } = props
-  return <div className='pt-8'>
-    <Card className='w-full'>
-      <div className="mb-10 pb-20 bg-white md:p-12 p-3 min-h-full dark:bg-hexo-black-gray">
-        {Object.keys(archivePosts).map(archiveTitle => (
-          <BlogPostArchive
-            key={archiveTitle}
-            posts={archivePosts[archiveTitle]}
-            archiveTitle={archiveTitle}
-          />
-        ))}
+const LayoutAbout = (props) => {
+  const { post, siteInfo } = props
+  const router = useRouter()
+
+  // useEffect(() => {// 404
+  //   if (!post) {
+  //     setTimeout(() => {
+  //       if (isBrowser) {
+  //         const article = document.getElementById('notion-article')
+  //         if (!article) {
+  //           router.push('/404').then(() => {
+  //             console.warn('找不到页面', router.asPath)
+  //           })
+  //         }
+  //       }
+  //     }, siteConfig('POST_WAITING_TIME_FOR_404') * 1000)
+  //   }
+  // }, [post])
+  return (
+    <>
+      <div className="w-full  about">
+
+        <div id="article-wrapper" className="w-full  ">
+
+          <article itemScope itemType="https://schema.org/Movie" className="subpixel-antialiased overflow-y-hidden" >
+            {/* Notion文章主体 */}
+            <section className='px-2 md:p-6 mx-auto justify-center lg:max-w-5xl'>
+              <img src={siteInfo?.icon} className='size-32 object-center rounded-xl cursor-pointer' alt={siteConfig('AUTHOR')} />
+              <SocialButton />
+              {post && <NotionPage post={post} />}
+
+            </section>
+
+
+
+          </article>
+
+
+
+        </div>
       </div>
-    </Card>
-  </div>
+
+    </>
+  )
 }
 
 export {
@@ -454,6 +483,6 @@ export {
   LayoutCategoryIndex,
   LayoutPostList,
   LayoutTagIndex,
-  LayoutAbout111,
+  LayoutAbout,
   LayoutPlogList,
 }

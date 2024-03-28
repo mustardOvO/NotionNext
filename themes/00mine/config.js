@@ -14,25 +14,25 @@ const CONFIG = {
   HEXO_MENU_CATEGORY: true, // 显示分类
   HEXO_MENU_TAG: true, // 显示标签
   HEXO_MENU_ARCHIVE: true, // 显示归档
-  HEXO_MENU_SEARCH: true, // 显示搜索
+  HEXO_MENU_SEARCH: false, // 显示搜索
 
   HEXO_POST_LIST_COVER: true, // 列表显示文章封面
   HEXO_POST_LIST_COVER_HOVER_ENLARGE: false, // 列表鼠标悬停放大
 
   HEXO_POST_LIST_COVER_DEFAULT: false, // 封面为空时用站点背景做默认封面
-  HEXO_POST_LIST_SUMMARY: true, // 文章摘要
+  HEXO_POST_LIST_SUMMARY: false, // 文章摘要
   HEXO_POST_LIST_PREVIEW: false, // 读取文章预览
   HEXO_POST_LIST_IMG_CROSSOVER: false, // 博客列表图片左右交错
 
   HEXO_ARTICLE_ADJACENT: true, // 显示上一篇下一篇文章推荐
   HEXO_ARTICLE_COPYRIGHT: false, // 显示文章版权声明
-  HEXO_ARTICLE_RECOMMEND: true, // 文章关联推荐
+  HEXO_ARTICLE_RECOMMEND: false, // 文章关联推荐
 
-  HEXO_WIDGET_LATEST_POSTS: true, // 显示最新文章卡
+  HEXO_WIDGET_LATEST_POSTS: false, // 显示最新文章卡
   HEXO_WIDGET_ANALYTICS: false, // 显示统计卡
-  HEXO_WIDGET_TO_TOP: true,
+  HEXO_WIDGET_TO_TOP: false,
   HEXO_WIDGET_TO_COMMENT: false, // 跳到评论区
   HEXO_WIDGET_DARK_MODE: true, // 夜间模式
-  HEXO_WIDGET_TOC: true // 移动端悬浮目录
+  HEXO_WIDGET_TOC: false // 移动端悬浮目录
 }
 export default CONFIG

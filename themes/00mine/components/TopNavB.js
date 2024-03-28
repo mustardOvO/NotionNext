@@ -8,6 +8,8 @@ import CONFIG from '../config'
 import { useRouter } from 'next/router'
 import { MenuItemDrop } from './MenuItemDrop'
 import { debounce } from 'lodash';
+import { isMobile } from '@/lib/utils'
+import DarkModeButton from '@/components/DarkModeButton'
 
 let windowTop = 0
 
@@ -19,16 +21,17 @@ let windowTop = 0
 const TopNav = props => {
   const { customNav, customMenu } = props
   const links = customMenu
-  const { locale } = useGlobal()
+  const { locale, isDarkMode, toggleDarkMode } = useGlobal()
   const router = useRouter()
 
 
 
   // 监听滚动
   useEffect(() => {
+    topNavStyleHandler()
     window.addEventListener('scroll', topNavStyleHandler)
     router.events.on('routeChangeComplete', topNavStyleHandler)
-    topNavStyleHandler()
+    
     return () => {
       router.events.off('routeChangeComplete', topNavStyleHandler)
       window.removeEventListener('scroll', topNavStyleHandler)
@@ -43,18 +46,15 @@ const TopNav = props => {
     // 首页和文章页会有头图
     const header = document.querySelector('#header')
     // 导航栏和头图是否重叠
-    const scrollInHeader = (scrollS < 10 || scrollS < header?.clientHeight - 50) // 透明导航条的条件
+    const scrollInHeader = (header && scrollS < header?.clientHeight) // 与头图重合-强制dark mode
 
     if (scrollInHeader) {
-      // nav && nav.classList.replace('bg-white', 'bg-none')
-      nav && nav.classList.replace('border', 'border-transparent')
-      nav && nav.classList.replace('drop-shadow-md', 'shadow-none')
-      // nav && nav.classList.replace('dark:bg-hexo-black-gray', 'transparent')
+      nav && nav.classList.add('dark')
+      nav && nav.classList.remove('light')
     } else {
-      // nav && nav.classList.replace('bg-none', 'bg-white')
-      nav && nav.classList.replace('border-transparent', 'border')
-      nav && nav.classList.replace('shadow-none', 'drop-shadow-md')
-      // nav && nav.classList.replace('transparent', 'dark:bg-hexo-black-gray')
+      nav && nav.classList.remove('dark')
+      nav && nav.classList.add('light')
+
     }
 
     if (scrollInHeader) {
@@ -74,55 +74,26 @@ const TopNav = props => {
     }
   }, throttleMs)
   )
+  
 
   //导航icon缩放
-  // const handleMouseEnter = () => {
-  //   const elements = document.querySelectorAll('.nav-item');
-  //   elements.forEach(element => {
-  //     element.style.height = '4rem';
-  //     element.style.width = '4rem';
-  //   });
-  // };
-  const [hoveredElementSize, setHoveredElementSize] = useState(100);
   const containerRef = useRef(null);
 
-  // const handleMouseOver = (e) => {
-  //   const elementId = e.target.id;
-  //   const updatedChildElements = childElements.map((child) => {
-  //     const newSize = elementId === `child-${child.id}` ? 150 : 100; // Adjust sizes as needed
-  //     return { ...child, size: newSize };
-  //   });
-  //   setChildElements(updatedChildElements);
-  // };
-
-  // const handleMouseMove = debounce((e) => {
-  //   setChildElements(prevChildElements => {
-  //     const mouseX = e.clientX;
-  //     const mouseY = e.clientY;
-  //     const updatedChildElements = prevChildElements.map((child) => {
-  //       const element = document.getElementById(`child-${child.id}`);
-  //       const rect = element.getBoundingClientRect();
-  //       const distance = Math.sqrt(Math.pow(mouseX - rect.left, 2) + Math.pow(mouseY - rect.top, 2));
-  //       const newSize = 200 - distance * 0.5; // Adjust scaling factor as needed
-  //       return { ...child, size: newSize };
-  //     });
-  //     return updatedChildElements;
-  //   });
-  // }, 10); // Adjust debounce delay as needed
-
-  const handleMouseOver =  debounce((e) => {
+  const handleMouseOver = debounce((e) => {
     const container = document.getElementById('nav-container');
     const containerRect = container.getBoundingClientRect();
     const mouseX = e.clientX;
 
-    const elements = document.querySelectorAll('.nav-item');
-    elements.forEach(element => {
-      const elementRect = element.getBoundingClientRect();
-      const distance = Math.max(2,0.1*Math.abs(mouseX - (elementRect.left + elementRect.width / 2)));
-      const newSize = 40 + (30 / distance ); // Adjust the scaling factor as needed
-      element.style.width = newSize + 'px';
-      element.style.height = newSize + 'px';
-    });
+    if (!isMobile()) {
+      const elements = document.querySelectorAll('.nav-item');
+      elements.forEach(element => {
+        const elementRect = element.getBoundingClientRect();
+        const distance = Math.max(2, 0.1 * Math.abs(mouseX - (elementRect.left + elementRect.width / 2)));
+        const newSize = 40 + (30 / distance); // Adjust the scaling factor as needed
+        element.style.width = newSize + 'px';
+        element.style.height = newSize + 'px';
+      });
+    }
   }, 10);
 
   const handleMouseLeave = () => {
@@ -133,8 +104,8 @@ const TopNav = props => {
     });
   };
 
-  
-// ______________________________________________________
+
+  // ______________________________________________________
 
 
   return (<div id='top-nav' className='z-40 w-full object-right bg-none'>
@@ -145,19 +116,20 @@ const TopNav = props => {
         transform duration-300 transition-all'">
 
       <div className=' w-full h-min flex items-center justify-center '>
-        {/* 按钮 */}
+        {/* 按钮容器 */}
         <div id="nav-container" className="p-1  rounded-full backdrop-blur-sm 
-                bg-gray-700/10 dark:bg-black/30 border border-indigo-300/30 dark:border-indigo-300/10 dark:text-gray-200 text-black
-                flex  gap-2 justify-center items-center
-                hover:p-2 hover:h-[72px] transition-all duration-200" 
-                onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave} ref={containerRef}>
-          
-          {/* <div > <MenuListTop {...props} /></div> */}
+                bg-gray-700/10 dark:bg-black/30 border border-indigo-300/30 dark:border-indigo-300/10 dark:text-gray-200 
+                flex  gap-2 justify-center items-center overflow-visible
+                hover:h-12 sm:hover:p-2 sm:hover:h-[72px] transition-all duration-200"
+          onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave} ref={containerRef}>
 
-            {links?.map((link, index) => link && link.show && <MenuItemDrop key={index} link={link} />)}
+          {links?.map((link, index) => link && link.show && <MenuItemDrop key={index} link={link} />)}
+          <div className="w-px h-6 bg-slate-400/20 dark:bg-slate-300/10"></div>
+
+          <DarkModeButton  />
 
           <Logo {...props} />
-        
+
         </div>
       </div>
 
