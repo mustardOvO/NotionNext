@@ -75,7 +75,7 @@ const About = props => {
 // }
 
 export async function getStaticProps() {
-  let fullSlug = 'about'
+  let fullSlug = 'aboutme'
   if (JSON.parse(BLOG.PSEUDO_STATIC)) {
     if (!fullSlug.endsWith('.html')) {
       fullSlug += '.html'
@@ -90,7 +90,7 @@ export async function getStaticProps() {
 
   // 处理非列表内文章的内信息
   if (!props?.post) {
-    const pageId = 'about'
+    const pageId = 'aboutme'
     if (pageId.length >= 32) {
       const post = await getNotion(pageId)
       props.post = post
