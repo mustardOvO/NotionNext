@@ -131,7 +131,7 @@ const BLOG = {
             '/404': 'Layout404',
             '/tag': 'LayoutTagIndex',
             '/category': 'LayoutCategoryIndex',
-            '/[prefix]': 'LayoutSlug',
+            // '/[prefix]': 'LayoutSlug',
             '/[prefix]/[slug]': 'LayoutSlug',
             '/[prefix]/[slug]/[...suffix]': 'LayoutSlug',
             '/signin': 'LayoutSignIn',
