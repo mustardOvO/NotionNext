@@ -95,13 +95,11 @@ const BlogPost = (props) => {
     <div
 
       // data-aos-delay={`${delay}`}
-      data-aos-offset="-200"
+      // data-aos-offset="-200"
       data-aos="fade-up"
       data-aos-duration="300"
       data-aos-once="false"
       data-aos-anchor-placement="bottom-bottom"
-      //data-wow-delay="2s"
-      // data-wow-offset="30"
       
       
 

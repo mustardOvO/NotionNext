@@ -36,9 +36,9 @@ const TopNav = props => {
       router.events.off('routeChangeComplete', topNavStyleHandler)
       window.removeEventListener('scroll', topNavStyleHandler)
     }
-  }, [])
+  }, [router])
 
-  const throttleMs = 200
+  const throttleMs =  200
 
   const topNavStyleHandler = useCallback(throttle(() => {
     const scrollS = window.scrollY
@@ -46,14 +46,18 @@ const TopNav = props => {
     // 首页和文章页会有头图
     const header = document.querySelector('#header')
     // 导航栏和头图是否重叠
-    const scrollInHeader = (header && scrollS < header?.clientHeight) // 与头图重合-强制dark mode
+    const scrollInHeader = (header && scrollS <= header?.clientHeight) // 与头图重合-强制dark mode
 
     if (scrollInHeader) {
+      // nav && nav.classList.remove('light')
       nav && nav.classList.add('dark')
-      nav && nav.classList.remove('light')
+      nav && nav.classList.replace('light','dark')
+
+      console.log('in')
     } else {
       nav && nav.classList.remove('dark')
       nav && nav.classList.add('light')
+      console.log('out')
 
     }
 
