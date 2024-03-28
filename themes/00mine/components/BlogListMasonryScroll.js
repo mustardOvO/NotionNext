@@ -18,8 +18,8 @@ const BlogListScroll = props => {
 
   let hasMore = false
   const postsToShow = posts
-    ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
-    : []
+    // ? Object.assign(posts).slice(0, postnum<5? 5:postnum)
+    // : []
 
   if (posts) {
     const totalCount = posts.length
@@ -97,7 +97,7 @@ const BlogListScroll = props => {
 
         <div className="grid pb-32 w-full mx-auto max-w-[1800px] "  ref={gridRef}>
           <div className="grid-sizer"></div>
-              {posts.map((post, index) => (
+              {postsToShow.map((post, index) => (
                 <BlogPost index={index} key={post.id} className="grid-item" post={post} {...props} />
             ))}
         </div>
