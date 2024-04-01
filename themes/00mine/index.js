@@ -450,11 +450,11 @@ const LayoutAbout = (props) => {
 
         <div id="article-wrapper" className="w-full  ">
 
-          <article itemScope itemType="https://schema.org/Movie" className="subpixel-antialiased overflow-y-hidden" >
+          <article  className="subpixel-antialiased overflow-y-hidden" >
             {/* Notion文章主体 */}
-            <section className='px-2 md:p-6 mx-auto justify-center lg:max-w-5xl'>
-              <img src={siteInfo?.icon} className='size-32 object-center rounded-xl cursor-pointer' alt={siteConfig('AUTHOR')} />
-              <SocialButton />
+            <section className='px-2 md:p-6 mx-auto w-full items-center space-y-4 object-top lg:max-w-5xl'>
+              <img src={siteInfo?.icon} className='size-32 mx-auto object-center rounded-xl cursor-pointer' alt={siteConfig('AUTHOR')} />
+              <SocialButton className=' ' />
               {post && <NotionPage post={post} />}
 
             </section>
