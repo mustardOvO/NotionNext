@@ -8,7 +8,7 @@ import { getNotion } from '@/lib/notion/getNotion'
 import { getPageTableOfContents } from '@/lib/notion/getPageTableOfContents'
 import { getLayoutByTheme } from '@/themes/theme'
 import md5 from 'js-md5'
-import { uploadDataToAlgolia } from '@/lib/algolia'
+// import { uploadDataToAlgolia } from '@/lib/algolia'
 import { siteConfig } from '@/lib/config'
 
 /**
@@ -118,7 +118,6 @@ export async function getStaticProps() {
   //   const index = allPosts.indexOf(props.post)
   //   props.prev = allPosts.slice(index - 1, index)[0] ?? allPosts.slice(-1)[0]
   //   props.next = allPosts.slice(index + 1, index + 2)[0] ?? allPosts[0]
-    
   // } else {
   //   props.prev = null
   //   props.next = null
