@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import TagItemMini from './TagItemMini'
 import CONFIG from '../config'
 import { BlogPostCardInfo } from './BlogPostCardInfo'
 import { siteConfig } from '@/lib/config'
@@ -6,17 +7,17 @@ import LazyImage from '@/components/LazyImage'
 import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
 
 const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
-  const showPreview = siteConfig('HEXO_POST_LIST_PREVIEW', null, CONFIG) && post.blockMap
-  if (post && !post.pageCoverThumbnail && siteConfig('HEXO_POST_LIST_COVER_DEFAULT', null, CONFIG)) {
-    post.pageCoverThumbnail = siteInfo?.pageCover
-  }
-  const showPageCover = siteConfig('HEXO_POST_LIST_COVER', null, CONFIG) && post?.pageCoverThumbnail && !showPreview
-  //   const delay = (index % 2) * 200
-  const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
+    const showPreview = siteConfig('HEXO_POST_LIST_PREVIEW', null, CONFIG) && post.blockMap
+    if (post && !post.pageCoverThumbnail && siteConfig('HEXO_POST_LIST_COVER_DEFAULT', null, CONFIG)) {
+        post.pageCoverThumbnail = siteInfo?.pageCover
+    }
+    const showPageCover = siteConfig('HEXO_POST_LIST_COVER', null, CONFIG) && post?.pageCoverThumbnail
+    //   const delay = (index % 2) * 200
+    const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
 
-  return (
+    return (
 
-        <div className={`${siteConfig('HEXO_POST_LIST_COVER_HOVER_ENLARGE', null, CONFIG) ? ' hover:scale-110 transition-all duration-150' : ''}`} >
+        <div  >
             <div key={post.id}
                 data-aos="fade-up"
                 data-aos-easing="ease-in-out"
@@ -24,18 +25,29 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                 data-aos-once="false"
                 data-aos-anchor-placement="top-bottom"
                 id='blog-post-card'
-                className={`group md:h-56 w-full flex justify-between md:flex-row flex-col-reverse ${siteConfig('HEXO_POST_LIST_IMG_CROSSOVER', null, CONFIG) && index % 2 === 1 ? 'md:flex-row-reverse' : ''}
-                    overflow-hidden border dark:border-black rounded-xl bg-white dark:bg-hexo-black-gray`}>
+                className={`group w-full pb-6 border-b border-slate-300 dark:border-slate-700
+                flex justify-between sm:flex-row flex-col-reverse overflow-hidden `}>
+
+
 
                 {/* 文字内容 */}
                 <BlogPostCardInfo index={index} post={post} showPageCover={showPageCover} showPreview={showPreview} showSummary={showSummary} />
 
                 {/* 图片封面 */}
                 {showPageCover && (
-                    <div className="md:w-5/12 overflow-hidden">
-                        <Link href={url} passHref legacyBehavior>
-                        <LazyImage priority={index === 1} src={post?.pageCoverThumbnail} className='h-56 w-full object-cover object-center group-hover:scale-110 duration-500' />
-                        </Link>
+                    <div className='w-full sm:w-64 h-32' >
+                        <LazyImage priority={index === 1} src={post?.pageCoverThumbnail} className='w-full h-full object-cover object-center ' />
+                        {/* 文章tag */}
+                        <div className="flex fixed right-0 top-0 m-2">
+                            {post.tagItems && (
+                                <div className="flex  flex-wrap overflow-x-auto  ">
+                                    {post.tagItems.map(tag => (
+                                        <TagItemMini key={tag.name} tag={tag} />
+                                    ))}
+                                </div>
+                            )}
+
+                        </div>
                     </div>
                 )}
 
@@ -43,7 +55,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
 
         </div>
 
-  )
+    )
 }
 
 export default BlogPostCard

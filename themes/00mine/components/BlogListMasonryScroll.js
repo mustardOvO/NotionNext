@@ -113,10 +113,12 @@ const BlogListScroll = props => {
 
         <div
             // onClick={handleGetMore}
-            className="w-full my-4 pt-4 pb-20 text-center cursor-pointer dark:text-gray-500"
+            // className="w-full my-4 pt-4 pb-20 text-center cursor-pointer dark:text-gray-500"
+            className="w-full my-4 pt-4 pb-20 text-center text-slate-400 dark:text-slate-700"
         >
             {' '}
-            {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} `}{' '}
+            {/* {hasMore ? locale.COMMON.MORE : `${locale.COMMON.NO_MORE} `}{' '} */}
+            {'END'}
         </div>
 
       </div>

@@ -215,10 +215,17 @@ const LayoutPostList = (props) => {
  * @returns
  */
 const LayoutPlogList = (props) => {
-  return <div className='pt-8'>
+  const router = useRouter()
+  if (props.posts[0] && props.posts[0].category === '3D实验'){ //3D实验——使用瀑布流
+    return <div className='pt-8'> 
     <SlotBar {...props} />
     {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogListPage {...props} /> : <BlogListScroll {...props} />}
-  </div>
+  </div>}
+
+  else{return <div className='pt-8'>
+  <SlotBar {...props} />
+  {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogPostListPage {...props} /> : <BlogPostListScroll {...props}/>}
+</div>}
 }
 
 /**

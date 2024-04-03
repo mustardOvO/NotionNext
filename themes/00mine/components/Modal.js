@@ -67,7 +67,7 @@ export default function Modal(props) {
                             leaveTo="opacity-0 translate-y-4 scale-50 w-0"
                         >
                             <Dialog.Panel className="relative w-full max-w-4xl transform overflow-hidden rounded-0 md:rounded-xl border border-zinc-800 text-left shadow-xl transition-all ">
-                                <div id="close" className="size-8 fa-solid fa-xmark text-white/60 text-center p-2  absolute top-2 right-2  bg-white/20 cursor-pointer rounded-full z-30 " onClick={handleClose}>
+                                <div id="close" className="size-8 iconfont icon-xmark text-white/60 text-center p-1  absolute top-2 right-2  bg-white/20 cursor-pointer rounded-full z-30 " onClick={handleClose}>
                                     {/* <i className="fa-solid fa-xmark"/> */}
                                 </div>
                                 <PostHeader post={modalContent} {...props} />

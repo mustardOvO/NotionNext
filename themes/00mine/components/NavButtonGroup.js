@@ -22,9 +22,9 @@ const NavButtonGroup = (props) => {
             className='group font-title hover:tracking-widest text-center text-2xl sm:text-3xl text-nowrap text-[#ebe19fcc] hover:text-[#dbe6c9]
             w-full  justify-center items-center flex flex-nowrap content-center gap-4 
             cursor-pointer  duration-200 transition-all'>
-               <div className="text-xl fas fa-caret-right  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
+               <div className="text-xl iconfont icon-tri-right  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
                {category.name}
-               <div className=" text-xl fas fa-caret-left  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
+               <div className=" text-xl iconfont icon-tri-left  text-[#ebe19fcc] text-center group-hover:opacity-100 opacity-0 transition duration-200"></div>
             </Link>
         )
       })}
