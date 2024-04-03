@@ -216,7 +216,7 @@ const LayoutPostList = (props) => {
  */
 const LayoutPlogList = (props) => {
   const router = useRouter()
-  if (props.posts[0] && props.posts[0].category === '3D实验'){ //3D实验——使用瀑布流
+  if (props.posts && props.posts[0] && props.posts[0].category === '3D实验'){ //3D实验——使用瀑布流
     return <div className='pt-8'> 
     <SlotBar {...props} />
     {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogListPage {...props} /> : <BlogListScroll {...props} />}

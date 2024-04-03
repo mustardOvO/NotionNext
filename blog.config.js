@@ -126,7 +126,7 @@ const BLOG = {
             '/category/[category]': 'LayoutPlogList',
             // '/category/3D%E5%AE%9E%E9%AA%8C': 'LayoutPostList',//——————————————————————————————————
 
-            // '/category/[category]/page/[page]': 'LayoutPostList',
+            '/category/[category]/page/[page]': 'LayoutPostList',
             '/tag/[tag]': 'LayoutPlogList',
             '/tag/[tag]/page/[page]': 'LayoutPostList',
             '/search': 'LayoutSearch',
