@@ -5,9 +5,6 @@ import throttle from 'lodash.throttle'
 import { siteConfig } from '@/lib/config'
 import imagesLoaded from 'imagesloaded';
 import BlogPost from './BlogPost'
-import dynamic from 'next/dynamic'
-import NotionPage from '@/components/NotionPage'
-import { useHexoGlobal } from '..' //删掉
 
 
 
@@ -44,7 +41,7 @@ const BlogListScroll = props => {
   const masonryRef = useRef(null)
 
   useEffect(() => {
-    console.log(allPages)
+    // console.log(allPages)
     const loadMasonry = async () => {
         const Masonry = (await import('masonry-layout')).default;
         if (gridRef.current && typeof window !== 'undefined') {
@@ -71,10 +68,10 @@ const BlogListScroll = props => {
 
 
   // 监听滚动自动分页加载
-  // const scrollTrigger = useCallback(throttle(() => {
-  //   masonryRef.current.layout();
-  //   const scrollS = window.scrollY + window.outerHeight
-  //   const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
+  const scrollTrigger = useCallback(throttle(() => {
+    masonryRef.current.layout();
+    // const scrollS = window.scrollY + window.outerHeight
+    // const clientHeight = targetRef ? (targetRef.current ? (targetRef.current.clientHeight) : 0) : 0
     
     // if (scrollS > clientHeight+100) {
     //   handleGetMore()
@@ -83,19 +80,21 @@ const BlogListScroll = props => {
     //     masonryRef.current.layout();
     //   });
     // }
-  // }, 100))
+  }, 100))
 
 
     
 
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', scrollTrigger)
+  useEffect(() => {
+    window.addEventListener('scroll', scrollTrigger)
+    window.addEventListener("load", scrollTrigger);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', scrollTrigger)
-  //   }
-  // })
+    return () => {
+      window.removeEventListener('scroll', scrollTrigger)
+      window.removeEventListener("load", scrollTrigger);
+    }
+  })
 
 
   return (

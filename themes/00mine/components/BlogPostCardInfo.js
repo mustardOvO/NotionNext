@@ -1,7 +1,6 @@
 import NotionPage from '@/components/NotionPage'
 import Link from 'next/link'
 import TagItemMini from './TagItemMini'
-import TwikooCommentCount from '@/components/TwikooCommentCount'
 import { siteConfig } from '@/lib/config'
 import { formatDateFmt } from '@/lib/formatDate'
 import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
@@ -14,25 +13,45 @@ import NotionIcon from '@/components/NotionIcon'
  */
 export const BlogPostCardInfo = ({ post, showPreview, showPageCover, showSummary }) => {
     const url = checkContainHttp(post.slug) ? sliceUrlFromHttp(post.slug) : `${siteConfig('SUB_PATH', '')}/${post.slug}`
-    return <article className={'flex flex-col justify-center gap-2 sm:gap-4 py-4 sm:py-0 '}>
+    return <article className={'w-full flex flex-col justify-center gap-2 sm:gap-4 py-4 sm:py-0 '}>
         <div>
             <header>
-            <h2>
+
+                
+
+                <div className={`flex  flex-wrap overflow-x-auto pb-2`}>
+                    {post.tagItems.map(tag => (
+                        <Link
+                        key={tag}
+                        href={`/tag/${encodeURIComponent(tag.name)}`}
+                        passHref
+    
+                        className={`text-sm pr-2 font-medium notion-${tag.color}`}
+                    >
+    
+                        {tag.name}
+    
+                    </Link>
+                        // <div className={`text-sm font-medium notion-${tag.color}`}>{tag.name}</div>
+                    ))}
+                </div>
+
+                <h2>
                     {/* 标题 */}
                     <Link
                         href={url}
                         passHref
                         className={` cursor-pointer  ${showPreview ? 'text-center' : ''
-                            } leading-tight font-medium text-base sm:text-xl text-gray-600 dark:text-gray-100 `}>
+                            } leading-tight font-medium text-base sm:text-lg text-gray-600 dark:text-gray-100 `}>
 
                         <NotionIcon icon={post.pageIcon} /><span >{post.title}</span>
 
                     </Link>
                 </h2>
 
-                
 
-                
+
+
 
                 {/* 分类 */}
                 {/* { post?.category && <div
@@ -53,41 +72,23 @@ export const BlogPostCardInfo = ({ post, showPreview, showPageCover, showSummary
                 </div>} */}
             </header>
 
-            {/* 摘要 */}
-            {/* {(!showPreview || showSummary) && !post.results && (
-                <main className="line-clamp-2 replace my-3 text-gray-700  dark:text-gray-300 text-sm font-light leading-7">
-                    {post.summary}
-                </main>
-            )} */}
-
-            {/* 搜索结果 */}
-            {/* {post.results && (
-                <p className="line-clamp-2 mt-4 text-gray-700 dark:text-gray-300 text-sm font-light leading-7">
-                    {post.results.map((r, index) => (
-                        <span key={index}>{r}</span>
-                    ))}
-                </p>
-            )} */}
-
-            {/* 预览 */}
-            {/* {showPreview && (
-                <div className="overflow-ellipsis truncate">
-                    <NotionPage post={post} />
-                </div>
-            )} */}
-
         </div>
 
-        <div>
-            {/* 日期标签 */}
+
+        {/* 日期标签 */}
+        {/* <div>
             <div className="text-gray-400 font-light text-sm leading-4 mr-3">
 
-
                     {formatDateFmt(post?.publishDay || post.lastEditedDay, 'yyyy-MM')}
-
-
-
             </div>
-        </div>
+        </div> */}
+
+        {/* 摘要 */}
+        {
+            <p className=" text-gray-400 font-light text-sm  dark:text-gray-500  leading-7 whitespace-pre-line">
+                {post.summary}
+            </p>
+        }
+
     </article>
 }

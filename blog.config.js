@@ -113,7 +113,7 @@ const BLOG = {
       ],
       // FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', 'https://www.iconfont.cn/',],// font-awesome 字体图标地址; 可选 /css/all.min.css ， https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css
       
-      FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || '//at.alicdn.com/t/c/font_4484813_ubrhlj4855n.css',
+      FONT_AWESOME: process.env.NEXT_PUBLIC_FONT_AWESOME_PATH || '//at.alicdn.com/t/c/font_4484813_2nz8cbslr6w.css',
       // END ************网站字体*****************
 
       // 路径和组件映射，不同路径分别展示主题的什么组件

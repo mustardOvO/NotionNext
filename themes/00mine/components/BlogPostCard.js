@@ -26,7 +26,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                 data-aos-anchor-placement="top-bottom"
                 id='blog-post-card'
                 className={`group w-full pb-6 border-b border-slate-300 dark:border-slate-700
-                flex justify-between sm:flex-row flex-col-reverse overflow-hidden `}>
+                flex sm:flex-row flex-col-reverse overflow-hidden items-end transition transform duration-300`}>
 
 
 
@@ -35,10 +35,13 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
 
                 {/* 图片封面 */}
                 {showPageCover && (
-                    <div className='w-full sm:w-64 h-32' >
-                        <LazyImage priority={index === 1} src={post?.pageCoverThumbnail} className='w-full h-full object-cover object-center ' />
+                    <div className='relative w-full sm:w-64 h-32 aspect-[4/2] sm:opacity-60 sm:dark:opacity-40 group-hover:opacity-100 dark:group-hover:opacity-100 transition duration-300' >
+                        
+                        <LazyImage src={post?.pageCoverThumbnail} className='w-full h-full object-cover sm:mix-blend-color object-center sm:saturate-50 opacity-100 
+                        group-hover:filter-none group-hover:opacity-100  transition duration-300' />
+                        <div className="absolute bottom-0 w-full  h-full bg-slate-600 opacity-0 sm:opacity-40 sm:mix-blend-color group-hover:opacity-0 transition duration-300"></div>
                         {/* 文章tag */}
-                        <div className="flex fixed right-0 top-0 m-2">
+                        {/* <div className="flex fixed right-0 top-0 m-2">
                             {post.tagItems && (
                                 <div className="flex  flex-wrap overflow-x-auto  ">
                                     {post.tagItems.map(tag => (
@@ -47,7 +50,8 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
                                 </div>
                             )}
 
-                        </div>
+                        </div> */}
+                        
                     </div>
                 )}
 
