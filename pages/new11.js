@@ -1,7 +1,7 @@
 import { getGlobalData } from '@/lib/notion/getNotionData'
-import { useRouter } from 'next/router'
-import { getLayoutByTheme } from '@/themes/theme'
-import { siteConfig } from '@/lib/config'
+// import { useRouter } from 'next/router'
+// import { getLayoutByTheme } from '@/themes/theme'
+// import { siteConfig } from '@/lib/config'
 
 /**
  * 404
@@ -16,8 +16,8 @@ const new1 = props => {
 }
 
 export async function getStaticProps() {
-    const props = (await getGlobalData({ from: 'new11' })) || {}
-    return { props }
+  const props = (await getGlobalData({ from: 'new11' })) || {}
+  return { props }
 }
 
 export default new1

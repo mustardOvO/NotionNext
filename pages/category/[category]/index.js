@@ -43,7 +43,7 @@ export async function getStaticProps({ params: { category } }) {
   // console.log(Object.keys(props.posts[0]))
   // console.log(props.posts[0].id)
   // console.log(props.posts[0].slug)
-  if (category === "3D实验") {
+  if (category === '3D实验') {
     const tasks = props.posts.map(async p => {
       const block = await getPostBlocks(p.id)
       p.blockMap = block;
