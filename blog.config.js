@@ -141,6 +141,7 @@ const BLOG = {
             '/signin': 'LayoutSignIn',
             '/signup': 'LayoutSignUp',
             '/about': 'LayoutAbout',
+            '/new11': 'LayoutNew',
       },
 
       CAN_COPY: process.env.NEXT_PUBLIC_CAN_COPY || true, // 是否允许复制页面内容 默认允许，如果设置为false、则全栈禁止复制内容。

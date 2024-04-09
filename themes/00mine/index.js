@@ -429,28 +429,13 @@ const LayoutTagIndex = props => {
 
 
 /**
- * 新款页面
+ * 关于页面
  * @param {*} props
  * @returns
  */
 const LayoutAbout = (props) => {
   const { post, siteInfo } = props
   const router = useRouter()
-
-  // useEffect(() => {// 404
-  //   if (!post) {
-  //     setTimeout(() => {
-  //       if (isBrowser) {
-  //         const article = document.getElementById('notion-article')
-  //         if (!article) {
-  //           router.push('/404').then(() => {
-  //             console.warn('找不到页面', router.asPath)
-  //           })
-  //         }
-  //       }
-  //     }, siteConfig('POST_WAITING_TIME_FOR_404') * 1000)
-  //   }
-  // }, [post])
   return (
     <>
       <div className="w-full  about">
@@ -492,4 +477,5 @@ export {
   LayoutTagIndex,
   LayoutAbout,
   LayoutPlogList,
+  // LayoutNew,
 }
