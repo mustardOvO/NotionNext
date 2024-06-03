@@ -9,6 +9,7 @@ import { checkContainHttp, sliceUrlFromHttp } from '@/lib/utils'
 import { siteConfig } from '@/lib/config'
 
 
+
 /**
  * 博客照片卡牌
  * @param {*} props
@@ -24,11 +25,6 @@ const BlogPost = (props) => {
     setModalContent(post)
   }
 
-  // 实现动画 一个接一个出现
-  let delay = index * 100
-  if (isMobile()) {
-    delay = 0
-  }
 
   function getFileExtension(url) {// 提取 URL 中的文件扩展名
     const path = url.split('?')[0]; // 移除查询字符串和片段标识符
@@ -89,27 +85,56 @@ const BlogPost = (props) => {
     }
   }, [isVisible]);
 
+  const fadeInRef = useRef(null);
+  const translateRef = useRef(null);
+  // const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (fadeInRef.current) {
+        const top = fadeInRef.current.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight*0.9) {
+          fadeInRef.current.style.opacity = 1;
+          translateRef.current.style.height = '0px';
+        }
+        else{
+          fadeInRef.current.style.opacity = 0;
+          translateRef.current.style.height = '50px';
+          
+        }
+      }
+    };
+    window.addEventListener('load', handleScroll);
+    // window.addEventListener('resize', handleScroll);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // window.removeEventListener('load', handleScroll);
+      // window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
 
   return (
     <div
 
-      // data-aos-delay={`${delay}`}
-      // data-aos-offset="-200"
-      data-aos="fade-up"
-      data-aos-duration="300"
-      data-aos-once="false"
-      data-aos-anchor-placement="bottom-bottom"
-      
-      
-
 
       key={post?.id}
-      //display-order="0"
-      //class="grid-item" 
-      className='grid-item  w-full rounded-lg relative '>
+      ref={fadeInRef} 
+      className={`grid-item  w-full rounded-lg relative 
+      transition-all duration-800 ease-in`}
+      // style={{ opacity: 0, transform: 'translateY(20px)' }}
+      >
+        <div ref={translateRef}
+         className='h-0 transition-all duration-800 ease-in'>
 
-      <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray border dark:border-gray-800 min-h-20 rounded-lg m-1 relative overflow-clip ">
+        </div>
+
+      <div className="w-auto bg-hexo-light-gray dark:bg-hexo-black-gray border dark:border-gray-800 min-h-20 rounded-lg m-1 relative overflow-clip "
+      // style={{ opacity: 0.5, transform: 'translateY(20px)' }}
+      >
         <div
           onClick={handleClick} className='cursor-pointer'>
 
