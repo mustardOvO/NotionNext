@@ -433,6 +433,8 @@ const LayoutTagIndex = props => {
  * @param {*} props
  * @returns
  */
+
+import RiveItem from './components/RiveItem'
 const LayoutAbout = (props) => {
   const { post, siteInfo } = props
   const router = useRouter()
@@ -450,6 +452,7 @@ const LayoutAbout = (props) => {
               {post && <NotionPage post={post} />}
 
             </section>
+            <RiveItem/>
 
 
 
