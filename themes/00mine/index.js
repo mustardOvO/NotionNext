@@ -447,7 +447,7 @@ const LayoutAbout = (props) => {
           <article  className="subpixel-antialiased overflow-y-hidden" >
             {/* Notion文章主体 */}
             <section className='px-2 md:p-6 mx-auto w-full items-center space-y-4 object-top lg:max-w-5xl'>
-              <img src={siteInfo?.icon} className='size-32 mx-auto object-center rounded-xl cursor-pointer' alt={siteConfig('AUTHOR')} />
+              <img src={siteInfo?.icon} className='size-32 mx-auto object-center rounded-xl cursor-pointer text-center' alt={siteConfig('AUTHOR')} />
               <SocialButton className=' ' />
               {post && <NotionPage post={post} />}
 

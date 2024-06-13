@@ -53,11 +53,11 @@ const TopNav = props => {
       nav && nav.classList.add('dark')
       nav && nav.classList.replace('light','dark')
 
-      console.log('in')
+      // console.log('in')
     } else {
       nav && nav.classList.remove('dark')
       nav && nav.classList.add('light')
-      console.log('out')
+      // console.log('out')
 
     }
 

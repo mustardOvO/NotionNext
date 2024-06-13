@@ -58,7 +58,7 @@ const BLOG = {
             'https://fonts.googleapis.com/css?family=Bitter&display=swap',
             'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
             'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap',
-            'https://fonts.gstatic.com" crossorigin',
+            // 'https://fonts.gstatic.com" crossorigin',
             'https://fonts.googleapis.com/css2?family=Amarante&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Kalnia:wght@100..700&family=Katibeh&family=Poller+One&family=Glory:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"',
             'https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300&display=swap'
       ],
