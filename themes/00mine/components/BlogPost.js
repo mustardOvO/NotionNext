@@ -100,7 +100,7 @@ const BlogPost = (props) => {
         }
         else{
           fadeInRef.current.style.opacity = 0;
-          translateRef.current.style.height = '50px';
+          // translateRef.current.style.height = '50px';
           
         }
       }

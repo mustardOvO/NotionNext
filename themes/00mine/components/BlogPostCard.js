@@ -19,7 +19,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
 
         <div  >
             <div key={post.id}
-                data-aos="fade-up"
+                data-aos="fade-in "
                 data-aos-easing="ease-in-out"
                 data-aos-duration="800"
                 data-aos-once="false"
