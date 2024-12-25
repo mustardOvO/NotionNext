@@ -323,7 +323,8 @@ const LayoutSlug = props => {
             {post?.type === 'Post' && <>
               {/* <ArticleCopyright {...props} />
               <ArticleRecommend {...props} /> */}
-              <ArticleAdjacent {...props} />
+              {/* 上一篇下一篇 */}
+              {/* <ArticleAdjacent {...props} /> */}
             </>}
 
           </article>
@@ -452,7 +453,7 @@ const LayoutAbout = (props) => {
               {post && <NotionPage post={post} />}
 
             </section>
-            <RiveItem/>
+            {/* <RiveItem/> */}
 
 
 

@@ -96,11 +96,11 @@ const BlogPost = (props) => {
         const windowHeight = window.innerHeight;
         if (top < windowHeight*0.9) {
           fadeInRef.current.style.opacity = 1;
-          translateRef.current.style.height = '0px';
+          translateRef.current.style.height = '0px'; 
         }
         else{
           fadeInRef.current.style.opacity = 0;
-          translateRef.current.style.height = '50px';
+          // translateRef.current.style.height = '50px';
           
         }
       }
