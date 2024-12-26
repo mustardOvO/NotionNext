@@ -80,7 +80,7 @@ const BlogListScroll = props => {
     //     masonryRef.current.layout();
     //   });
     // }
-  }, 100))
+  }, 10))
 
 
     

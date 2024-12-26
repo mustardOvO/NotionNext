@@ -94,7 +94,7 @@ const BlogPost = (props) => {
       if (fadeInRef.current) {
         const top = fadeInRef.current.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        if (top < windowHeight*0.9) {
+        if (top < windowHeight*0.95) {
           fadeInRef.current.style.opacity = 1;
           translateRef.current.style.height = '0px'; 
         }
@@ -106,13 +106,13 @@ const BlogPost = (props) => {
       }
     };
     window.addEventListener('load', handleScroll);
-    // window.addEventListener('resize', handleScroll);
+    window.addEventListener('resize', handleScroll);
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      // window.removeEventListener('load', handleScroll);
-      // window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('load', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, []);
 
